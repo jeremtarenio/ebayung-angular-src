@@ -1,0 +1,28 @@
+.loading-container {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.helper {
+  height: calc(100vh - 55.98px);
+  width: 100vw;
+}
+
+.loading-spinner {
+  height: 100px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+@media screen and (min-width: 992px) {
+  .helper {
+    height: calc(100vh - 145px);
+  }
+}

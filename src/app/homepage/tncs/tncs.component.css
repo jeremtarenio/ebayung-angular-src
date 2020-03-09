@@ -1,0 +1,9 @@
+h4 {
+    font-family: 'Josefin Sans';
+}
+
+@media screen and (min-width:992px) { /* means 992 and ABOVE */
+    .container{
+        max-width: 1400px;
+    }
+}

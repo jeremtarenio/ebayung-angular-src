@@ -1,0 +1,122 @@
+#banner {
+    /* background: url('../../../assets/photos/fuirts.jpg'); */
+    background-position: 25% 25%;
+    height: 45vh;
+}
+
+
+.banner-text-container {
+    background: rgba(118, 125, 107, 0.726);
+    color: white;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.banner-text-container {
+    padding: 1.3rem!important;
+}
+
+h1.banner-text {
+    font-size: 1rem;
+}
+
+p.banner-text {
+    font-size: 0.7rem;
+}
+
+.btn-shop-now {
+    color: white;
+    border: 1px solid white;
+    border-radius: 8px;
+}
+
+.btn-shop-now:hover {
+    background: white;
+    color: #767d6b;
+}
+
+@media screen and (min-width:321px) { /* means 576 and ABOVE */
+    .banner-text-container {
+        padding: 2rem!important;
+    }
+
+    h1.banner-text {
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+
+    p.banner-text {
+        font-size: 0.9rem;
+    }
+}
+
+
+@media screen and (min-width:576px) { /* means 576 and ABOVE */
+    .banner-text-container {
+        padding: 2rem!important;
+    }
+
+    h1.banner-text {
+        font-size: 1.7rem;
+    }
+
+    p.banner-text {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width:768px) { /* means 768 and ABOVE */
+    .banner-text-container {
+        padding: 1.5rem!important;
+    }
+
+    h1.banner-text {
+        font-size: 1.7rem;
+    }
+
+    p.banner-text {
+        font-size: 1rem;
+    }
+}
+
+
+@media screen and (min-width:992px) { /* means 992 and ABOVE */
+    .banner-text-container {
+        padding: 2rem!important;
+    }
+
+    h1.banner-text {
+        font-size: 1.7rem;
+    }
+
+    p.banner-text {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width:1200px) { /* means 1200px and ABOVE */
+    .banner-text-container {
+        padding: 2rem!important;
+    }
+
+    h1.banner-text {
+        font-size: 2.1rem;
+    }
+
+    p.banner-text {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width:1394px) { /* means 1394px and ABOVE */
+    .banner-text-container {
+        padding: 2rem!important;
+    }
+
+    h1.banner-text {
+        font-size: 2.5rem;
+    }
+
+    p.banner-text {
+        font-size: 1rem;
+    }
+}

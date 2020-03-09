@@ -1,0 +1,14 @@
+#closing-feature {
+    background: url('../../../assets/svg/method-draw-image v2.svg');
+    background-size: 46vw;
+    background-position: bottom;
+    background-color: #F1F3EC;
+    background-repeat: repeat-x;
+}
+
+@media screen and (min-width:768px) { /* means 992 and ABOVE */
+    #closing-feature {
+        background-size: 13vw;
+    }
+}
+

@@ -1,0 +1,8 @@
+.darkener {
+    height: 100%;
+    width: 100vw;
+    position: fixed;
+    background: rgba(0,0,0,0.5);
+    z-index: 100;
+  }
+  

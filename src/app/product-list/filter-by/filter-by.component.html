@@ -1,0 +1,51 @@
+    <div style="min-height: 600px;">
+        <h5 class="mb-3 filter-text">Filter page by: </h5>
+
+        <div *ngIf="subcategories.length !== 0">
+            <div class="separator my-3"></div>
+            <h6 class="filter-text">Subcategories</h6>
+            <div class="form-check">
+                <div *ngFor="let subcategory of subcategories" class="text-capitalize filter-text">
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value="{{ subcategory.subCategory }}"
+                        id="defaultCheck1"
+                        (change)="onToggleSubcategory(subcategory.subCategory)"
+                        [checked]="isSubcategoryActive(subcategory.subCategory)"
+                    >
+                    <label class="form-check-label" for="{{ subcategory.subCategory }}">
+                      {{ subcategory.subCategory}} ({{ subcategory.count }})
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="separator my-3"></div>
+        <h6 class=" filter-text">New & On Offer</h6>
+        <div class="form-check">
+            <div class="filter-text">
+                <input class="form-check-input" type="checkbox" value="new" id="defaultCheck1" (change)="onToggleFilter('new')" [checked]="isFilterActive('new')">
+                <label class="form-check-label" for="new">
+                  New
+                </label>
+            </div>
+            <div class="filter-text">
+                <input class="form-check-input" type="checkbox" value="onOffer" id="defaultCheck1" (change)="onToggleFilter('onoffer')" [checked]="isFilterActive('onoffer')">
+                <label class="form-check-label" for="onOffer">
+                  On Offer
+                </label>
+            </div>
+        </div>
+        <div class="separator my-3"></div>
+        <!-- <h6 class=" filter-text">Producers</h6>
+        <div class="form-check">
+            <div *ngFor="let producer of producers" class="filter-text">
+                <input class="form-check-input" type="checkbox" value="{{ producer }}" id="defaultCheck1" (change)="onToggle(producer)" [checked]="isFilterActive(producer)">
+                <label class="form-check-label text-capitalize" for="{{ producer }}">
+                    {{ producer }}
+                </label>
+            </div>
+        </div> -->
+
+    </div>

@@ -1,0 +1,67 @@
+<div class="my-navbar d-flex justify-content-center">
+  <div class="my-dropdown">
+    <button class="dropbtn px-4 py-2 text-capitalize"
+      (click)="navigateToAll()">All Products</button>
+  </div>
+
+  <div class="my-dropdown" *ngFor="let category of categories">
+    <button class="dropbtn px-4 py-2 text-capitalize"
+      (click)="navigateToCategory(category.name)">{{ category.name }}</button> <!-- (click)="navigate(category.name)" -->
+    <div class="my-dropdown-content">
+      <a class="px-4 py-2 text-capitalize" *ngFor="let subCategory of category.subCategories" (click)="navigateToSubcategory(category.name, subCategory)">{{ subCategory }}</a> <!-- [href]="generateHref(category.url, subCategory)" -->
+    </div>
+  </div>
+
+  <!-- dummy categories -->
+  <div _ngcontent-veh-c7="" class="my-dropdown"><button _ngcontent-veh-c7="" class="dropbtn px-4 py-2 text-capitalize"
+      tabindex="0" ng-reflect-router-link="/categories/">Recipe boxes</button>
+    <div _ngcontent-veh-c7="" class="my-dropdown-content">
+      <!--bindings={
+      "ng-reflect-ng-for-of": "writer,emergency,stop,hesitate"
+    }--><a _ngcontent-veh-c7="" class="px-4 py-2 text-capitalize">writer</a><a _ngcontent-veh-c7=""
+        class="px-4 py-2 text-capitalize">emergency</a><a _ngcontent-veh-c7=""
+        class="px-4 py-2 text-capitalize">stop</a><a _ngcontent-veh-c7=""
+        class="px-4 py-2 text-capitalize">hesitate</a><a _ngcontent-veh-c7=""
+        class="px-4 py-2 text-capitalize">wound</a></div>
+  </div>
+  <div _ngcontent-veh-c7="" class="my-dropdown"><button _ngcontent-veh-c7="" class="dropbtn px-4 py-2 text-capitalize"
+      tabindex="0" ng-reflect-router-link="/categories/">Fridge</button>
+    <div _ngcontent-veh-c7="" class="my-dropdown-content">
+      <!--bindings={
+    "ng-reflect-ng-for-of": "momentum,maximum,arch,regret,p"
+  }--><a _ngcontent-veh-c7="" class="px-4 py-2 text-capitalize">momentum</a><a _ngcontent-veh-c7=""
+        class="px-4 py-2 text-capitalize">maximum</a><a _ngcontent-veh-c7=""
+        class="px-4 py-2 text-capitalize">arch</a><a _ngcontent-veh-c7="" class="px-4 py-2 text-capitalize">regret</a><a
+        _ngcontent-veh-c7="" class="px-4 py-2 text-capitalize">perception</a></div>
+  </div>
+  <div _ngcontent-veh-c7="" class="my-dropdown"><button _ngcontent-veh-c7="" class="dropbtn px-4 py-2 text-capitalize"
+      tabindex="0" ng-reflect-router-link="/categories/">Pantry</button>
+    <div _ngcontent-veh-c7="" class="my-dropdown-content">
+      <!--bindings={
+    "ng-reflect-ng-for-of": "adopt,depend,fork,needle,explo"
+  }--><a _ngcontent-veh-c7="" class="px-4 py-2 text-capitalize">adopt</a><a _ngcontent-veh-c7=""
+        class="px-4 py-2 text-capitalize">depend</a><a _ngcontent-veh-c7="" class="px-4 py-2 text-capitalize">fork</a><a
+        _ngcontent-veh-c7="" class="px-4 py-2 text-capitalize">needle</a><a _ngcontent-veh-c7=""
+        class="px-4 py-2 text-capitalize">explosion</a></div>
+  </div>
+  <div _ngcontent-veh-c7="" class="my-dropdown"><button _ngcontent-veh-c7="" class="dropbtn px-4 py-2 text-capitalize"
+      tabindex="0" ng-reflect-router-link="/categories/">Household</button>
+    <div _ngcontent-veh-c7="" class="my-dropdown-content">
+      <!--bindings={
+    "ng-reflect-ng-for-of": "share,minimize,abbey"
+  }--><a _ngcontent-veh-c7="" class="px-4 py-2 text-capitalize">share</a><a _ngcontent-veh-c7=""
+        class="px-4 py-2 text-capitalize">minimize</a><a _ngcontent-veh-c7=""
+        class="px-4 py-2 text-capitalize">abbey</a></div>
+  </div>
+  <div _ngcontent-veh-c7="" class="my-dropdown"><button _ngcontent-veh-c7="" class="dropbtn px-4 py-2 text-capitalize"
+      tabindex="0" ng-reflect-router-link="/categories/">Drinks</button>
+    <div _ngcontent-veh-c7="" class="my-dropdown-content">
+      <!--bindings={
+    "ng-reflect-ng-for-of": "precision,grip,present,hotdog,"
+  }--><a _ngcontent-veh-c7="" class="px-4 py-2 text-capitalize">precision</a><a _ngcontent-veh-c7=""
+        class="px-4 py-2 text-capitalize">grip</a><a _ngcontent-veh-c7=""
+        class="px-4 py-2 text-capitalize">present</a><a _ngcontent-veh-c7=""
+        class="px-4 py-2 text-capitalize">hotdog</a><a _ngcontent-veh-c7=""
+        class="px-4 py-2 text-capitalize">environment</a></div>
+  </div>
+</div>

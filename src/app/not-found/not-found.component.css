@@ -1,0 +1,46 @@
+section {
+  min-height: calc(100vh - 55.98px);
+  height: 100%;
+  background: #f1f3ec;
+  background: url("../../assets/svg/method-draw-image v2.svg");
+  background-size: 11.9rem;
+  background-position: bottom;
+  background-color: #f1f3ec;
+  background-repeat: repeat-x;
+}
+
+.pinya {
+  width: 12rem;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+}
+
+.heading {
+  letter-spacing: 1px;
+  text-align: center;
+  color: #767d6b;
+}
+
+@media screen and (min-width: 376px) {
+  .pinya {
+    width: 16rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .pinya {
+    width: 20rem;
+  }
+
+  section {
+    min-height: calc(100vh - 145px);
+  }
+}
+
+@media screen and (min-width: 1285px) {
+  /* means 992 and ABOVE */
+  .container {
+    max-width: 1200px;
+  }
+}

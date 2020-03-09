@@ -1,0 +1,115 @@
+.property,
+.value {
+  display: flex;
+}
+
+.property {
+  align-items: flex-start;
+}
+
+.value {
+  align-items: center;
+}
+
+.form-control {
+  transition: background 0.3s;
+  border-radius: 0;
+}
+
+.my-button {
+  border-radius: 0;
+  display: block;
+}
+
+.input.form-control {
+  height: calc(1.5em + 0.35rem + 2px);
+}
+
+.change-pw {
+  border-bottom: 0.5px solid orange;
+  color: orange;
+}
+
+.form-group {
+  width: 100%;
+  max-width: 300px;
+}
+
+textarea {
+  max-width: 300px;
+}
+
+form .ng-dirty.ng-valid {
+  border: 0;
+  border-bottom: 1px solid #58c458;
+}
+
+form .ng-dirty.ng-invalid {
+  border: 0;
+  border-bottom: 1px solid red;
+}
+
+.invalid-label {
+  color: red;
+  margin-bottom: 1rem;
+  margin-left: 0.35rem;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.btn.disabled {
+  cursor: not-allowed;
+}
+
+.btn:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.submit-btn {
+  display: block;
+  width: 100%;
+}
+
+.iconify {
+  cursor: pointer;
+}
+
+.form-control:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: none;
+  border-bottom: 1px solid #c7c7c7;
+}
+
+.form-section,
+.my-button,
+.form-control {
+  font-size: 12px;
+}
+
+input, textarea {
+  border: 0;
+  border-bottom: 1px solid #c7c7c7;
+}
+
+@media screen and (min-width: 376px) {
+  .form-section,
+  .my-button,
+  .form-control {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .submit-btn {
+    display: initial;
+    width: initial;
+  }
+
+  .form-section,
+  .my-button,
+  .form-control {
+    font-size: 1rem;
+  }
+}

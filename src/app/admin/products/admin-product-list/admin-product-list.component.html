@@ -1,0 +1,32 @@
+
+<h5 class="font-weight-light mb-3">Products list</h5>
+<div class="table-responsive">
+  <table class="table table-striped w-100 d-block d-md-table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Product Price</th>
+        <!-- <th scope="col">Product Description 1</th>
+        <th scope="col">Product Description 2</th>
+        <th scope="col">Product Description 3</th> -->
+        <th scope="col">Category</th>
+        <th scope="col">Subcategory</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td scope="row">{{ product.id }}</td>
+        <td scope="row">{{ product.product_name }}</td>
+        <td scope="row">₱{{ product.product_price }}</td>
+        <!-- <td scope="row">{{ product.product_desc_1 }}</td>
+        <td scope="row">{{ product.product_desc_2 }}</td>
+        <td scope="row">{{ product.product_desc_3 }}</td> -->
+        <td scope="row">{{ product.category }}</td>
+        <td scope="row">{{ product.subcategory }}</td>
+        <td><a (click)="onEdit(product.id)">Edit</a> | <a>Delete</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,61 @@
+.btn:focus {
+    outline: none !important;
+    box-shadow: none;
+}
+
+.card {
+    border-radius: 0!important;
+    border: 0;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.card-body {
+    border: 1px solid rgba(0,0,0,.125);
+    border-top: 0;
+    font-size: 0.8rem;
+}
+
+.view-order-btn {
+    font-size: 0.8rem;
+    border: 1px solid gainsboro;
+    border-radius: 0;
+    background: #f3f0ec;
+}
+
+.btn-link {
+    color: black;
+}
+
+.receive-btn {
+    color: white;
+    background: #F2A231;
+    border-radius: 0;
+    font-size: 0.8rem;
+}
+
+.order-header {
+    background: #F1F3EC;
+    border-radius: 0;
+    color: #767d6b;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.order-summary-body {
+    padding: 1rem;
+    border: 1px solid gainsboro;
+    border-top: 0;
+}
+
+.value {
+    word-break: break-all;
+}
+
+@media screen and (min-width: 376px) {
+    .order-header {
+        font-size: 1rem;
+    }
+  }
+
+
+

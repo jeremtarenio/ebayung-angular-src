@@ -1,0 +1,63 @@
+<section [ngStyle]="{ 'transform': cartOpen ? 'translateX(0)' : 'translateX(100%)' }" class="">
+    <div class="loading-container" *ngIf="deleteCartItemLoading">
+        <div class="h-100 w-100" style="position: relative;">
+            <img class="cart-loading-spinner" src="assets/gifs/loading.svg" alt="">
+        </div>
+    </div>
+
+    <div>
+        <div class="d-flex justify-content-between align-items-center cart-header px-4 mb-3 mt-4">
+            <div class="d-flex align-items-center justify-content-between">
+                <span class="iconify cart-icon mr-2" data-icon="bx:bx-basket" data-inline="false"></span>
+                <span class="cart-text">Bayung</span>
+            </div>
+            <div (click)="onToggleCart()">
+                <span class="iconify cross-icon" data-icon="emojione-monotone:cross-mark" data-inline="false"></span>
+            </div>
+        </div>
+        <div class="free-del-banner px-4 py-3 mb-3">Lorem ipsum dolor sit amet consectetur.</div>
+
+        <div class="text-center" *ngIf="cartItems.length === 0">
+            <span class="iconify mb-3 empty-cart-icon" data-icon="mdi-cart-remove" data-inline="false"></span>
+            <h4 class="font-weight-light">Cart is empty :(</h4>
+        </div>
+
+        <div class="cart-item-list">
+            <div class="container">
+                <div class="row cart-item-row no-gutters" *ngFor="let cartItem of cartItems">
+                    <div class="col-6 d-flex align-items-center justify-content-center">
+                        <div class="img-container">
+                            <img src="{{ cartItem.imgUrl }}" alt="" class="product-img">
+                            <!-- <img src="assets/gifs/loading.gif"  class="product-img"> -->
+                        </div>
+                    </div>
+                    <div class="col-6 d-flex align-items-center" style="padding-left: 1rem">
+                        <div class="name-container">
+                            <p class="product-name text-capitalize">
+                                {{ (cartItem.productName.length > 14) ? (cartItem.productName | slice:0:14) + '...' : cartItem.productName }}
+                            </p>
+                            <p>₱{{ computeItemPrice(cartItem.productPrice, cartItem.quantity) }}</p>
+                            <div class="amount-section bg-dark d-flex justify-content-between mb-2">
+                                <button class="quantity-btn" (click)="onDecrementQuantity(cartItem.productId)"> -
+                                </button>
+                                <input class="quantity-input" style="text-align: center;" type="number" id="quantity"
+                                    value="{{ cartItem.quantity }}">
+                                <button class="quantity-btn" (click)="onIncrementQuantity(cartItem.productId)"> +
+                                </button>
+                            </div>
+                            <button class="remove-item" (click)="onDeleteCartItem(cartItem.productId)">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-part mb-4">
+            <div class="discount-banner pl-4 py-3 mb-4">Lorem ipsum dolor sit amet.</div>
+            <div class="d-flex justify-content-between align-items-center px-4">
+                <span>Total: <span class="cart-total">₱{{ cartTotal ? cartTotal : 0 }}</span></span>
+                <button class="btn my-button" routerLink="checkout" (click)="onCheckout()" [ngClass]="checkOutButtonDisabled ? 'disabled' : ''" [disabled]="checkOutButtonDisabled">Check Out</button>
+            </div>
+        </div>
+    </div>
+</section>

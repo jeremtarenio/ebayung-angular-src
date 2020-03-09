@@ -1,0 +1,73 @@
+<p *ngIf="loading" class="text-center">Loading orders...</p>
+
+  <div *ngIf="!loading">
+    <p *ngIf="orders.length === 0" class="text-center">You have no orders yet.</p>
+    <div *ngFor="let order of orders" class="mb-3">
+      <button class="btn btn-block order-header py-3 px-4 text-left" type="button" data-toggle="collapse"
+        attr.data-target="#order-{{ order.orderId }}" aria-expanded="false"
+        attr.aria-controls="order-{{ order.orderId }}">
+        <span class="iconify" data-icon="bx:bx-chevron-right" data-inline="false"></span> Order ID: {{ order.orderId }} | ₱{{ (computeTotal(order.orderItems) | number:'.2') }}
+      </button>
+      <div class="collapse" attr.id="order-{{ order.orderId }}">
+        <div class="card card-body">
+          <div class="row mb-2">
+            <div class="col-4 d-flex align-items-center">Order ID:</div>
+            <div class="col-8 d-flex align-items-center value">{{ order.orderId }}</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-4 d-flex align-items-center">Purchase Date:</div>
+            <div class="col-8 d-flex align-items-center value">{{ order.date }}</div>
+          </div>
+          <div class=" mb-2">
+
+            <div class="my-2">
+              <button class="btn btn-block view-order-btn" type="button" data-toggle="collapse"
+                attr.data-target="#order-{{ order.orderId }}-summary" aria-expanded="false" attr.aria-controls="order-{{ order.orderId }}-summary">
+                <span class="iconify" data-icon="bx:bx-chevron-right" data-inline="false"></span> View Order Summary
+              </button>
+              <div class="collapse" attr.id="order-{{ order.orderId }}-summary">
+                <div class="order-summary-body">
+                  <div class="row mb-2 order-item" *ngFor="let orderItem of order.orderItems" routerLink="../../products/{{ orderItem.productId }}">
+                    <div class="col text-capitalize">{{ orderItem.productName }}</div>
+                    <div class="col d-flex align-items-center">x {{ orderItem.quantity }}</div>
+                    <div class="col d-flex align-items-center">P{{ orderItem.price * orderItem.quantity }}</div>
+                  </div>
+                  <div class="row font-weight-bold mt-2">
+                    <div class="col">Total</div>
+                    <div class="col offset-4">P{{ computeTotal(order.orderItems) }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row mb-2">
+            <div class="col-4 d-flex align-items-center">Name:</div>
+            <div class="col-8 font-weight-bold d-flex align-items-center value">
+              {{ order.firstName + ' ' + order.lastName }}</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-4 d-flex align-items-center">Contact:</div>
+            <div class="col-8 d-flex align-items-center value">{{ order.contactNumber }}<br>{{ order.email }}</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-4 d-flex align-items-center">Shipping Address:</div>
+            <div class="col-8 d-flex align-items-center value">{{ order.shippingAddress }}</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-4 d-flex align-items-center">Status:</div>
+            <div class="col-8 d-flex align-items-center value"><span class="font-weight-bold">{{ order.status }}</span>
+            </div>
+          </div>
+          <div *ngIf="order.status === 'Shipping Complete'">
+            <div class="row mb-3">
+              <div class="col-8 offset-4">Please acknowledge by clicking the button below.</div>
+            </div>
+            <button class="btn btn-block receive-btn">I received my order.</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>

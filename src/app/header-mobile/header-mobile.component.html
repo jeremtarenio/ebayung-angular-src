@@ -1,0 +1,123 @@
+<app-darkener *ngIf="isSearchActive"></app-darkener>
+
+<div
+  id="mySidenav"
+  class="sidenav"
+  [ngStyle]="{'transform': navOpened ? 'translateX(0px)' : 'translateX(-300px)',
+              'box-shadow': navOpened ? '0 0 10px 0 rgba(0,0,0,0.2)' : 'initial'
+             }"
+  style="z-index: 101;"
+>
+  <a class="" routerLink="/" (click)="onNavigate()"><span class="iconify nav-icon home" data-icon="ant-design:home-filled" data-inline="false"></span>Home</a>
+  <a (click)="toggleCategories()">
+    <svg class="iconify nav-icon cat-arrow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20" _ngcontent-ixb-c1="" data-icon="dashicons-arrow-right-alt2" data-inline="false"
+      [ngStyle]="{'transform': categoriesActive ? 'rotate(90deg)' : 'rotate(0deg)'}"
+    ><path d="M6 15l5-5l-5-5l1-2l7 7l-7 7z" fill="currentColor"></path>
+    </svg>
+    <span>Categories</span>
+  </a>
+  <div class="categories" style="overflow: hidden;" [ngStyle]="{'height': categoriesActive ? '397.15px' : '0'}">
+    <div class="categories-container"> <!-- [ngStyle]="{'transform': categoriesActive ? 'translateY(0px)' : 'translateY(-422.25px)'}" -->
+      <a
+      class="cat text-capitalize h-100"
+      (click)="navigateToAll()"
+      >
+      <span class="iconify m-0 mb-1 mr-2" data-icon="dashicons-arrow-right-alt2" data-inline="false"></span>
+        All Products
+      </a>
+      <a
+        class="cat text-capitalize h-100"
+        *ngFor="let category of categories; let i = index"
+        (click)="onSelectCategory(i)"
+      >
+        <span class="iconify m-0 mb-1 mr-2" data-icon="dashicons-arrow-right-alt2" data-inline="false"></span>
+        {{ category.name }}
+      </a>
+
+      <!-- dummy categories -->
+      <a _ngcontent-xdf-c3="" class="cat text-capitalize h-100"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20" _ngcontent-xdf-c3="" class="iconify m-0 mb-1 mr-2" data-icon="dashicons-arrow-right-alt2" data-inline="false"><path d="M6 15l5-5l-5-5l1-2l7 7l-7 7z" fill="currentColor"></path></svg> Recipe boxes </a>
+      <a _ngcontent-xdf-c3="" class="cat text-capitalize h-100"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20" _ngcontent-xdf-c3="" class="iconify m-0 mb-1 mr-2" data-icon="dashicons-arrow-right-alt2" data-inline="false"><path d="M6 15l5-5l-5-5l1-2l7 7l-7 7z" fill="currentColor"></path></svg> Pantry </a>
+      <a _ngcontent-xdf-c3="" class="cat text-capitalize h-100"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20" _ngcontent-xdf-c3="" class="iconify m-0 mb-1 mr-2" data-icon="dashicons-arrow-right-alt2" data-inline="false"><path d="M6 15l5-5l-5-5l1-2l7 7l-7 7z" fill="currentColor"></path></svg> Fridge </a>
+      <a _ngcontent-xdf-c3="" class="cat text-capitalize h-100"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20" _ngcontent-xdf-c3="" class="iconify m-0 mb-1 mr-2" data-icon="dashicons-arrow-right-alt2" data-inline="false"><path d="M6 15l5-5l-5-5l1-2l7 7l-7 7z" fill="currentColor"></path></svg> Household </a>
+      <a _ngcontent-xdf-c3="" class="cat text-capitalize h-100"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20" _ngcontent-xdf-c3="" class="iconify m-0 mb-1 mr-2" data-icon="dashicons-arrow-right-alt2" data-inline="false"><path d="M6 15l5-5l-5-5l1-2l7 7l-7 7z" fill="currentColor"></path></svg> Drinks </a>
+
+    </div>
+  </div>
+  <div>
+    <a routerLink="account/dashboard" *ngIf="userLoggedIn" (click)="onNavigate()"><span class="iconify nav-icon" data-icon="bx-bxs-user-circle" data-inline="false"></span>Account</a>
+    <a href="" *ngIf="userLoggedIn" (click)="onLogout()"><span class="iconify nav-icon" data-icon="bx-bxs-log-in-circle" data-inline="false"></span>Logout</a>
+    <a routerLink="account/login" *ngIf="!userLoggedIn" (click)="onNavigate()"><span class="iconify nav-icon" data-icon="bx-bxs-log-in-circle" data-inline="false"></span>Login</a>
+    <a routerLink="account/register" *ngIf="!userLoggedIn" (click)="onNavigate()"><span class="iconify nav-icon" data-icon="gridicons:user-add" data-inline="false"></span>Register</a>
+    <a><span class="iconify nav-icon" data-icon="emojione-monotone:information" data-inline="false"></span>About</a>
+    <a><span class="iconify nav-icon" data-icon="el-phone" data-inline="false"></span>Contact</a>
+  </div>
+</div>
+
+<div
+  id="mySidenav"
+  class="sidenav"
+  [ngStyle]="{'transform': categoryClicked ? 'translateX(0px)' : 'translateX(-300px)',
+              'box-shadow': categoryClicked ? '0 0 10px 0 rgba(0,0,0,0.2)' : 'initial'
+             }"
+  style="z-index: 102;"
+>
+  <a class="" (click)="closeSubCategories()">
+    <span class="iconify m-0 mb-1 mr-1" data-icon="dashicons-arrow-left-alt2" data-inline="false"></span>
+    Back
+  </a>
+  <div *ngIf="activeCategory">
+    <a class="active-category-title" href="#">{{ activeCategory.name }}</a>
+    <a (click)="navigateToCategory(activeCategory.url)">All {{ activeCategory.name }}</a>
+    <a class="text-capitalize" (click)="navigateToSubcategory(activeCategory.url, subcategory)" *ngFor="let subcategory of activeCategory.subCategories">
+      {{ subcategory }}
+    </a>
+  </div>
+
+</div>
+
+<div class="search-section px-3 d-flex justify-content-center align-items-center" [ngClass]="isSearchActive ? 'visible' : 'hidden'">
+  <form (submit)="onSearch(searchForm)">
+    <input #searchForm autocapitalize="none" name="searchValue" class="form-control mr-sm-2 pl-0" class="search-field" type="text" placeholder="Search" aria-label="Search">
+    <button class="search-btn" type="submit"><span class="iconify" data-icon="ant-design:search-outline" data-inline="false" style="color: black"></span></button>
+    <span class="font-weight-bold ml-3" (click)="toggleSearch()">X</span>
+  </form>
+</div>
+
+<div id="main-nav">
+  <div class="my-header" [ngStyle]="{'transform': navOpened ? 'translateX(300px)' : 'translateX(0px)'}">
+    <div style="background-color: #767d6b;" class="p-1 px-3 d-flex align-items-center justify-content-between"><!--  burger button -->
+      <div class="container-fluid p-0">
+        <div class="row no-gutters">
+          <div class="col-2 d-flex align-items-center justify-content-start">
+            <button class="navbar-toggler p-0 m-0" style="z-index: 5" type="button" (click)="toggleNav()">
+              <div class="bar1" [ngClass]="{'change': navOpened ? true : false}"></div>
+              <div class="bar2" [ngClass]="{'change': navOpened ? true : false}"></div>
+              <div class="bar3" [ngClass]="{'change': navOpened ? true : false}"></div>
+            </button>
+          </div>
+          <div class="col-8 d-flex">
+
+              <h2 class="company mb-0 font-weight-light text-center pt-2" id="company-name" style="width: 100%;">
+                <span class="iconify carrot-icon" data-icon="fa-solid:carrot" data-inline="false"></span>
+                eBayung
+                <span class="iconify carrot-icon" data-icon="fa-solid:carrot" data-inline="false"></span>
+              </h2>
+
+          </div>
+          <div class="col-2 d-flex align-items-center justify-content-end">
+            <div (click)="toggleSearch()">
+              <span class="iconify search-icon" data-icon="ant-design:search-outline" data-inline="false"></span>
+            </div>
+            <div (click)="onToggleCart()">
+              <div>
+                <div class="cart-item-count-container" [ngClass]="{'scaled': scaled ? true : false}"><p class="count">{{ cartCount }}</p></div>
+                <span class="iconify cart-icon ml-2" data-icon="bx:bx-basket" data-inline="false"></span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

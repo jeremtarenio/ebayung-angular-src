@@ -1,0 +1,89 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  /* height: 100%; */
+  overflow-x: hidden;
+  margin: 0!important;
+  padding: 0!important;
+  padding-top: 120px;
+  font-family: 'Montserrat', sans-serif;
+
+
+
+}
+
+/* * {
+  background: #000 !important;
+  color: #0f0 !important;
+  outline: solid #f00 1px !important;
+} */
+
+/* * {
+  -webkit-overflow-scrolling: touch;
+} */
+
+.scrolling-disabled {
+  overflow: hidden;
+}
+
+.title {
+  font-family: 'Josefin Sans';
+  color: #767d6b;
+  font-weight: 400;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+}
+
+.step-heading {
+  font-weight: 400;
+  color: #767d6b;
+  font-family: 'Josefin Sans';
+}
+
+.my-button {
+  background: #F2A231;
+  border: 1px solid #F2A231;
+  color: white;
+}
+
+.my-button:hover {
+  color: #ffffff;
+  text-decoration: none;
+  background: #db942f;
+  border-color: #db942f;
+}
+
+
+.container{
+  max-width: 90%;
+}
+
+.button-container,
+.button-container2 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.img-fluid {
+  width: 100%;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+.form-control:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+@media screen and (min-width:992px) { /* means 992 and ABOVE */
+  .button-container {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+  }
+}
+

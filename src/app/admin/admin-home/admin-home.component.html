@@ -1,0 +1,46 @@
+<!-- <section class="py-4">
+    <div class="container">
+        <h3 class="title" style="font-size: 1.5rem;">Admin Portal</h3>
+        <div class="row">
+            <div class="col-12 mb-4">
+                <ul class="nav nav-tabs no-gutters">
+                    <li class="nav-item col-4">
+                      <a class="nav-link" routerLinkActive="active" routerLink="profile"><span class="iconify" data-icon="ant-design:unordered-list-outlined" data-inline="false"></span> Orders</a>
+                    </li>
+                    <li class="nav-item col-4">
+                      <a class="nav-link" routerLinkActive="active" routerLink="products/list"><span class="iconify" data-icon="fa-solid:carrot" data-inline="false"></span> Products</a>
+                    </li>
+                    <li class="nav-item col-4">
+                        <a class="nav-link" routerLinkActive="active" routerLink="products/new"><span class="iconify" data-icon="ic-baseline-add-shopping-cart" data-inline="false"></span> Add Product</a>
+                    </li>
+                  </ul>
+            </div>
+            <div class="col-12">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<section>
+<div class="side-bar">
+    <div routerLink="/" style="display: inline; cursor: pointer;">
+        <h3 class="font-weight-light mb-3" id="company-name">
+          <span class="iconify mb-2" data-icon="fa-solid:carrot" data-inline="false"></span>
+          eBayung
+          <span class="iconify mb-2" data-icon="fa-solid:carrot" data-inline="false"></span>
+        </h3>
+      </div>
+      <div class="separator"></div>
+      <div (click)="onNavigate(target)" class="navlink-wrapper" routerLinkActive="active" routerLink="orders"><h5><span class="iconify mr-2" data-icon="el-list-alt" data-inline="false"></span> Orders</h5></div>
+      <div (click)="onNavigate(target)" class="navlink-wrapper" routerLinkActive="active" routerLink="products/list"><h5><span class="iconify mr-2" data-icon="ant-design:shop-outlined" data-inline="false"></span> Products</h5></div>
+      <div (click)="onNavigate(target)" class="navlink-wrapper" routerLinkActive="active" routerLink="products/edit"><h5><span class="iconify mr-2" data-icon="ant-design:file-add-outlined" data-inline="false"></span> Add Product</h5></div>
+      <div (click)="onNavigate(target)" class="navlink-wrapper" routerLinkActive="active" routerLink="users"><h5><span class="iconify mr-2" data-icon="el:group" data-inline="false"></span> Users</h5></div>
+
+</div>
+<div class="content" #target>
+        <router-outlet></router-outlet>
+</div>
+
+
+</section>

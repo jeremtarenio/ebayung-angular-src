@@ -1,0 +1,31 @@
+.star {
+    color: #F2A231;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.review {
+    margin-bottom: 2rem;
+}
+
+.avatar { 
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 1.5rem;
+}
+
+@media screen and (min-width:768px) { /* means 992 and ABOVE */
+    .container{
+        max-width: 70%;
+    }   
+}
+
+@media screen and (min-width:992px) { /* means 992 and ABOVE */
+    .container{
+        max-width: 1400px;
+    }
+
+    .review {
+        margin-bottom:initial;
+    }
+}

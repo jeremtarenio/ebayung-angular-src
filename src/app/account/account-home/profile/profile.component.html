@@ -1,0 +1,113 @@
+<p *ngIf="loading" class="text-center">Loading...</p>
+<div *ngIf="!loading">
+    <div class="alert alert-success" role="alert" *ngIf="success">
+        Update success.
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="error">
+        {{ errorMsg }}
+      </div>
+    <div class="form-section">
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+            <div class="row mb-4 no-gutters">
+                <div class="col-4 property">
+                    First Name:
+                </div>
+                <div class="col-7 value">
+                    <div class="form-group m-0">
+                        <input type="text" formControlName="firstName" class="form-control" id="firstName">
+                        <div class="invalid-label-container" *ngIf="profileForm.get('firstName').touched && profileForm.get('firstName').dirty && profileForm.hasError('required', 'firstName')">
+                            <label  for="email" class="invalid-label">Required</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 value" >
+                    <div class="form-group m-0" (click)="onEdit('firstName')">
+                        <span class="iconify ml-3 mb-1" data-icon="fe:pencil" data-inline="false"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4 no-gutters">
+                <div class="col-4 property">
+                    Last Name:
+                </div>
+                <div class="col-7 value">
+                    <div class="form-group m-0">
+                        <input type="text" formControlName="lastName" class="form-control" id="lastName">
+                        <div class="invalid-label-container" *ngIf="profileForm.get('lastName').touched && profileForm.get('lastName').dirty && profileForm.hasError('required', 'lastName')">
+                            <label  for="lastName" class="invalid-label">Required</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 value" >
+                    <div class="form-group m-0" (click)="onEdit('lastName')">
+                        <span class="iconify ml-3 mb-1" data-icon="fe:pencil" data-inline="false"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4 no-gutters">
+                <div class="col-4 property">
+                    E-mail:
+                </div>
+
+                <div class="col-7 value">
+                    <div class="form-group m-0">
+                        <input type="text" formControlName="email" class="form-control" id="email">
+                    </div>
+                </div>
+                <div class="col-1 value" >
+                    <div class="form-group m-0" (click)="onEdit('email')">
+                        <span class="iconify ml-3 mb-1" data-icon="fe:pencil" data-inline="false"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4 no-gutters">
+                <div class="col-4 property">
+                    Password:
+                </div>
+                <div class="col-8 value">
+                    <p class="m-0 change-pw" routerLink="change-password" style="cursor: pointer;">Change Password</p>
+                </div>
+            </div>
+            <div class="row mb-4 no-gutters">
+                <div class="col-4 property">
+                    Contact:
+                </div>
+                <div class="col-7 value">
+                    <div class="form-group m-0">
+                        <input type="text" formControlName="contactNumber" class="form-control" id="contactNumber">
+                        <div class="invalid-label-container" *ngIf="profileForm.get('contactNumber').touched && profileForm.get('contactNumber').dirty && profileForm.hasError('required', 'contactNumber')">
+                            <label  for="contactNumber" class="invalid-label">Required</label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-1 value" >
+                    <div class="form-group m-0" (click)="onEdit('contactNumber')">
+                        <span class="iconify ml-3 mb-1" data-icon="fe:pencil" data-inline="false"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4 no-gutters">
+                <div class="col-4 property">
+                    Delivery Address:
+                </div>
+                <div class="col-7 value">
+                    <div class="form-group m-0">
+                        <textarea class="form-control" cols="25" formControlName="deliveryAddress" id="deliveryAddress"
+                                rows="3"></textarea>
+                                <div class="invalid-label-container" *ngIf="profileForm.get('deliveryAddress').touched && profileForm.get('deliveryAddress').dirty && profileForm.hasError('required', 'deliveryAddress')">
+                                    <label  for="deliveryAddress" class="invalid-label">Required</label>
+                                </div>
+                    </div>
+                </div>
+                <div class="col-1 value" >
+                    <div class="form-group m-0" (click)="onEdit('deliveryAddress')">
+                        <span class="iconify ml-3 mb-1" data-icon="fe:pencil" data-inline="false"></span>
+                    </div>
+                </div>
+
+            </div>
+            <button class="btn btn-block my-button mt-4 submit-btn" [ngClass]="!profileForm.dirty ? 'disabled' : ''" [disabled]="!profileForm.dirty ? 'disabled' : ''">{{ loading ? 'Submitting...' : 'Submit' }}</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<footer>
+    <div class="container py-5">
+        <div class="row footer-content">
+            <div class="col-md-4 footer-column">
+                <div>
+                    <h5>Quick Links</h5>
+                    <p>Cart</p>
+                    <p>My Account</p>
+                    <p>Privacy Policy</p>
+                    <p>Terms & Conditions</p>
+                    <p>About Us</p>
+                </div>
+            </div>
+            <div class="col-md-4 footer-column">
+                <div>
+                    <h5>Categories</h5>
+                    <p *ngFor="let category of categories" class="text-capitalize">{{ category.name }}</p>
+                </div>
+            </div>
+            <div class="col-md-4 footer-column">
+                <div>
+                    <h5>Contact</h5>
+                    <p>0923 948 2048</p>
+                    <p>(02) 7796 8900</p>
+                    <p>support@ebayung.ph</p>
+                    <p class="icons">
+                        <span class="iconify mr-1" data-icon="jam-facebook-circle" data-inline="false"></span>
+                        <span class="iconify mr-1" data-icon="jam-twitter-circle" data-inline="false"></span>
+                        <span class="iconify mr-1" data-icon="jam:instagram" data-inline="false"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="text-center mt-5">
+            <h5 class="mb-1">eBayung</h5>
+            <p>© 2019 eBayung Inc. All rights reserved.</p>
+        </div> -->
+    </div>
+</footer>

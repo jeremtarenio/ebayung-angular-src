@@ -1,0 +1,100 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-7 d-flex register-col">
+                <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="form-container">
+                    <div>
+                        <h1 class="title text-center">Sign Up</h1>
+                        <div class="alert alert-danger" role="alert" *ngIf="serverErrorResponse">
+                            {{ serverErrorResponse }}
+                        </div>
+                        <div class="alert alert-success" role="alert" *ngIf="registrationSuccess">
+                            Account successfully created. Redirecting...
+                        </div>
+                        <div class="alert alert-info" role="alert" *ngIf="isRegistrationLoading">
+                            Processing...
+                        </div>
+                        <h6 class="caption mb-3"><span class="pd mr-3">Personal details</span><span class="ri">*Required info</span></h6>
+
+                        <div class="row no-gutters">
+                            <div class="col mr-2">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="First name*" formControlName="firstName" id="firstName">
+                                </div>
+                                <div class="invalid-label-container" *ngIf="!registrationForm.get('firstName').valid && registrationForm.get('firstName').dirty">
+                                    <label for="firstName" class="invalid-label">Required</label>
+                                </div>
+                            </div>
+                            <div class="col ml-2">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Last name*" formControlName="lastName" id="lastName">
+                                </div>
+                                <div class="invalid-label-container" *ngIf="!registrationForm.get('lastName').valid && registrationForm.get('lastName').dirty">
+                                <label for="lastName" class="invalid-label">Required</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="E-mail address*" formControlName="email" required id="email">
+                        </div>
+                        <div class="invalid-label-container" *ngIf="registrationForm.get('email').dirty && registrationForm.hasError('pattern', 'email')">
+                            <label  for="email" class="invalid-label">Required</label>
+                        </div>
+                        <div class="invalid-label-container" *ngIf="registrationForm.get('email').dirty && registrationForm.get('email').touched && registrationForm.hasError('email', 'email')">
+                            <label  for="email" class="invalid-label">Please enter a valid email address.</label>
+                        </div>
+                        <div class="invalid-label-container" *ngIf="registrationForm.get('email').status === 'PENDING'">
+                            <label  for="email" class="verifying-label">Verifying e-mail...</label>
+                        </div>
+                        <div class="invalid-label-container" *ngIf="registrationForm.get('email').valid">
+                            <label  for="email" class="verifying-label">E-mail is available.</label>
+                        </div>
+                        <div class="invalid-label-container" *ngIf="registrationForm.get('email').dirty && registrationForm.hasError('emailExists', 'email')">
+                            <label  for="email" class="invalid-label">E-mail already exists.</label>
+                        </div>
+
+                        <div class="form-group">
+                            <input [type]="passwordVisibility" class="form-control pw-input" placeholder="Password*" formControlName="password" id="password" autocomplete="on"><span class="eye" (click)="togglePasswordVisibility()">{{ passwordVisibility === 'password' ? 'SHOW' : 'HIDE' }}</span>
+                        </div>
+                        <div class="invalid-label-container" *ngIf="registrationForm.get('password').touched && registrationForm.get('password').dirty && registrationForm.hasError('required', 'password')">
+                            <label  for="password" class="invalid-label">Required</label>
+                        </div>
+                        <div class="invalid-label-container" *ngIf="registrationForm.get('password').touched && registrationForm.get('password').dirty && registrationForm.hasError('minlength', 'password')">
+                            <label  for="password" class="invalid-label">Password must be at least 8 characters.</label>
+                        </div>
+                        <div class="invalid-label-container password" *ngIf="registrationForm.get('password').touched && registrationForm.get('password').value?.length >= 8 && registrationForm.get('password').dirty && registrationForm.hasError('pattern', 'password')">
+                            <label  for="password" class="invalid-label">Password must have at least one lowercase & uppercase letter, one number & one special character.</label>
+                        </div>
+
+                        <h6 class="caption mb-3"><span class="pd">Contact</span></h6>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Contact number*" formControlName="contactNumber" id="contactNumber">
+                        </div>
+                        <div class="invalid-label-container" *ngIf="!registrationForm.get('contactNumber').valid && registrationForm.get('contactNumber').dirty">
+                            <label  for="contactNumber" class="invalid-label">Required</label>
+                        </div>
+
+                        <h6 class="caption mb-3"><span class="pd mr-3">Delivery address</span></h6>
+
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3" placeholder="You can change this later..." formControlName="deliveryAddress"></textarea>
+                        </div>
+
+                        <button class="btn btn-block sign-up-btn mb-3" [disabled]="isRegistrationLoading || !registrationForm.valid">{{ isRegistrationLoading ? 'Processing...' : 'Sign Up' }}</button> <!-- [disabled]="!registrationForm.valid" -->
+
+                        <label for="sign-up-btn" class="sign-up-label">By clicking on "Sign up" you are confirming that you have read and agree with our <a class="tnc-link">terms & conditions.</a></label>
+                    </div>
+                </form>
+            </div>
+            <div class="col-xl-6 col-lg-5 d-flex align-items-center register-caption" style="padding-left: 3rem">
+                <div style="width: 40rem">
+                    <h1 style="margin-bottom: 1rem; color: #767d6b">Lorem ipsum dolor sit.</h1>
+                    <p class="text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque aliquid assumenda suscipit tempora deserunt facilis porro deleniti eligendi repellendus ullam error quasi quam, accusamus quod aut rem architecto. Nisi, iusto.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

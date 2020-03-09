@@ -1,0 +1,241 @@
+<div *ngIf="isLoading">
+    <app-page-loading-spinner></app-page-loading-spinner>
+</div>
+
+<section>
+    <app-filter-by-mobile></app-filter-by-mobile>
+    <div [ngStyle]="{'display': isNavActive || isMobileFilterByToggled ? 'initial' : 'none'}">
+        <app-darkener></app-darkener>
+    </div>
+    <div class="container py-3">
+
+        <div class="row justify-content-between address-container">
+            <p class="my-0 address text-capitalize" *ngIf="allProductsMode">Home / All Products</p>
+            <p class="my-0 address text-capitalize" *ngIf="getByCategoryMode">Home / Categories / {{ address }}</p>
+            <p class="my-0 address" *ngIf="searchMode">Search results for "{{ searchValue }}"</p>
+            <p class="my-0 sort-section">Sort By:
+                <span (click)="onSortProducts('noOfRatings')" style="cursor: pointer"
+                    [ngStyle]="{'font-weight': activeSort === 'noOfRatings' ? 'bold' : 400}">Popularity</span> |
+                <span (click)="onSortProducts('name')" style="cursor: pointer"
+                    [ngStyle]="{'font-weight': activeSort === 'name' ? 'bold' : 400}">Name</span> |
+                <span (click)="onSortProducts('price')" style="cursor: pointer"
+                    [ngStyle]="{'font-weight': activeSort === 'price' ? 'bold' : 400}" class="mr-3">Price</span>
+                Order: <span (click)="onSelectOrder('DESC')" style="cursor: pointer"
+                    [ngStyle]="{'font-weight': activeOrder === 'DESC' ? 'bold' : 400}">Descending </span> |
+                <span (click)="onSelectOrder('ASC')" style="cursor: pointer"
+                    [ngStyle]="{'font-weight': activeOrder === 'ASC' ? 'bold' : 400}"> Ascending</span></p>
+
+            <div class="separator mt-2"></div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-2 p-0 filter-pane">
+                <app-filter-by></app-filter-by>
+            </div>
+
+            <div class="col-md-12 refine-section">
+                <div class="row text-center">
+                    <div class="col-6 filter-by-mobile d-flex align-items-center justify-content-center mb-0"
+                        (click)="onToggleFilterByMobile()">
+                        <h5 class="mb-0 filter-by">
+                            Filter By
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                aria-hidden="true" focusable="false" width="1em" height="1em"
+                                style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                                preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20" _ngcontent-ixb-c1=""
+                                class="iconify m-0 mr-1 mb-1 sort-by-arrow" data-icon="dashicons-arrow-right-alt2"
+                                data-inline="false"
+                                [ngStyle]="{'transform': isMobileFilterByToggled ? 'rotate(270deg)' : 'rotate(90deg)'}">
+                                <path d="M6 15l5-5l-5-5l1-2l7 7l-7 7z" fill="currentColor"></path>
+                            </svg>
+                        </h5>
+                    </div>
+                    <div class="col-6 sort-by-mobile d-flex align-items-center justify-content-center mb-0"
+                        (click)="onToggleSortByMobile()">
+                        <h5 class="mb-0 sort-by">
+                            Sort/Order
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                aria-hidden="true" focusable="false" width="1em" height="1em"
+                                style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                                preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20" _ngcontent-ixb-c1=""
+                                class="iconify m-0 mr-1 mb-1 sort-by-arrow" data-icon="dashicons-arrow-right-alt2"
+                                data-inline="false"
+                                [ngStyle]="{'transform': isMobileSortByToggled ? 'rotate(270deg)' : 'rotate(90deg)'}">
+                                <path d="M6 15l5-5l-5-5l1-2l7 7l-7 7z" fill="currentColor"></path>
+                            </svg>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 sort-by-options px-0"
+                style="overflow: hidden; box-shadow: rgba(0, 0, 0, 0.15) 2px 7px 5px -4px;"
+                [ngStyle]="{height: isMobileSortByToggled ? '336px' : '0px'}">
+                <div class="option">
+                    <div class="d-flex justify-content-between px-4">
+                        <h5 style="font-weight: 600;">Sort By: </h5>
+                    </div>
+                </div>
+                <div class="option" (click)="onSortProducts('noOfRatings')">
+                    <div class="d-flex justify-content-between px-4">
+                        <h5 style="display: inline;">Popularity</h5>
+                        <svg [ngStyle]="{'display': activeSort === 'noOfRatings' ? 'initial' : 'none'}"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            aria-hidden="true" focusable="false" width="1em" height="1em"
+                            style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                            preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20" _ngcontent-kcg-c6="" class="iconify"
+                            data-icon="entypo-check" data-inline="false">
+                            <path
+                                d="M8.294 16.998c-.435 0-.847-.203-1.111-.553L3.61 11.724a1.392 1.392 0 0 1 .27-1.951a1.392 1.392 0 0 1 1.953.27l2.351 3.104l5.911-9.492a1.396 1.396 0 0 1 1.921-.445c.653.406.854 1.266.446 1.92L9.478 16.34a1.39 1.39 0 0 1-1.12.656c-.022.002-.042.002-.064.002z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="option" (click)="onSortProducts('name')">
+                    <div class="d-flex justify-content-between px-4">
+                        <h5 style="display: inline;">Name</h5>
+                        <svg [ngStyle]="{'display': activeSort === 'name' ? 'initial' : 'none'}" [ngStyle]=""
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            aria-hidden="true" focusable="false" width="1em" height="1em"
+                            style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                            preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20" _ngcontent-kcg-c6="" class="iconify"
+                            data-icon="entypo-check" data-inline="false">
+                            <path
+                                d="M8.294 16.998c-.435 0-.847-.203-1.111-.553L3.61 11.724a1.392 1.392 0 0 1 .27-1.951a1.392 1.392 0 0 1 1.953.27l2.351 3.104l5.911-9.492a1.396 1.396 0 0 1 1.921-.445c.653.406.854 1.266.446 1.92L9.478 16.34a1.39 1.39 0 0 1-1.12.656c-.022.002-.042.002-.064.002z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="option" (click)="onSortProducts('price')">
+                    <div class="d-flex justify-content-between px-4">
+                        <h5 style="display: inline;">Price</h5>
+                        <svg [ngStyle]="{'display': activeSort === 'price' ? 'initial' : 'none'}" [ngStyle]=""
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            aria-hidden="true" focusable="false" width="1em" height="1em"
+                            style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                            preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20" _ngcontent-kcg-c6="" class="iconify"
+                            data-icon="entypo-check" data-inline="false">
+                            <path
+                                d="M8.294 16.998c-.435 0-.847-.203-1.111-.553L3.61 11.724a1.392 1.392 0 0 1 .27-1.951a1.392 1.392 0 0 1 1.953.27l2.351 3.104l5.911-9.492a1.396 1.396 0 0 1 1.921-.445c.653.406.854 1.266.446 1.92L9.478 16.34a1.39 1.39 0 0 1-1.12.656c-.022.002-.042.002-.064.002z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="option">
+                    <div class="d-flex justify-content-between px-4">
+                        <h5 style="font-weight: 600;">Order: </h5>
+                    </div>
+                </div>
+                <div class="option" (click)="onSelectOrder('ASC')">
+                    <div class="d-flex justify-content-between px-4">
+                        <h5 style="display: inline;">Ascending</h5>
+                        <svg [ngStyle]="{'display': activeOrder === 'ASC' ? 'initial' : 'none'}" [ngStyle]=""
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            aria-hidden="true" focusable="false" width="1em" height="1em"
+                            style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                            preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20" _ngcontent-kcg-c6="" class="iconify"
+                            data-icon="entypo-check" data-inline="false">
+                            <path
+                                d="M8.294 16.998c-.435 0-.847-.203-1.111-.553L3.61 11.724a1.392 1.392 0 0 1 .27-1.951a1.392 1.392 0 0 1 1.953.27l2.351 3.104l5.911-9.492a1.396 1.396 0 0 1 1.921-.445c.653.406.854 1.266.446 1.92L9.478 16.34a1.39 1.39 0 0 1-1.12.656c-.022.002-.042.002-.064.002z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="option" (click)="onSelectOrder('DESC')">
+                    <div class="d-flex justify-content-between px-4">
+                        <h5 style="display: inline;">Descending</h5>
+                        <svg [ngStyle]="{'display': activeOrder === 'DESC' ? 'initial' : 'none'}" [ngStyle]=""
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            aria-hidden="true" focusable="false" width="1em" height="1em"
+                            style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                            preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20" _ngcontent-kcg-c6="" class="iconify"
+                            data-icon="entypo-check" data-inline="false">
+                            <path
+                                d="M8.294 16.998c-.435 0-.847-.203-1.111-.553L3.61 11.724a1.392 1.392 0 0 1 .27-1.951a1.392 1.392 0 0 1 1.953.27l2.351 3.104l5.911-9.492a1.396 1.396 0 0 1 1.921-.445c.653.406.854 1.266.446 1.92L9.478 16.34a1.39 1.39 0 0 1-1.12.656c-.022.002-.042.002-.064.002z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-10 col-md-12" *ngIf="!isLoading">
+                <div class="text-center" *ngIf="pagedProducts.length === 0">
+                    <span class="iconify my-4 mag-glass-icon" data-icon="cil:magnifying-glass"
+                        data-inline="false"></span>
+                    <h4 class="font-weight-light">No results found :(</h4>
+                </div>
+                <div class="row products-row">
+                    <div class="col-xl-3 col-md-4 col-6 product-container" *ngFor="let product of pagedProducts">
+                        <!-- product start -->
+                        <div class="test">
+                            <div class="w-100 d-flex justify-content-center product-img-container mb-3">
+                                <app-product-image [imgSrc]="product.imgUrl" [routerLink]="['/products/' + product.id]"
+                                    (click)="scrollToTop()"></app-product-image>
+                                <!-- <img [hidden]="loading" (load)="onLoad()" src="{{ product.imageUrl }}" alt="" class="product-img mb-3"> -->
+                            </div>
+                            <p class="product-name">
+                                {{ (product.name.length > 12) ? (product.name | slice:0:12) + '...' : product.name }}
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="star-ratings-css">
+                                    <div class="star-ratings-css-top"
+                                        [ngStyle]="{'width': (product.averageRating) * 20 + '%'}">
+                                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                                    <div class="star-ratings-css-bottom">
+                                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                                </div>
+                                <p class="review-count m-0">({{ product.noOfRatings }})</p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <h5 class="mb-0 product-price">₱{{ product.price }}</h5>
+                                <button class="btn add-button" (click)="onAddToCart(product.id, 1, product.name)"
+                                    [disabled]="isAddToCartLoading(product.id)">{{ isAddToCartLoading(product.id) ? '' : 'Add' }}
+                                    <img class="add-spinner" src="assets/gifs/loading-white.svg" alt=""
+                                        *ngIf="isAddToCartLoading(product.id)">
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- <p class="pt-3">{{ product.desc }}</p>      -->
+                    </div> <!-- product end -->
+                </div>
+
+                <!-- pager -->
+                <div class="d-flex justify-content-center">
+                    <ul *ngIf="pager.pages && pager.pages.length" style="list-style-type:none" class="p-0 d-flex">
+                        <li (click)="setPage(1)">
+                            <div class="text d-flex align-items-center justify-content-center"
+                                [ngClass]="{disabled:pager.currentPage === 1}">
+                                <a><span class="iconify" data-icon="bx-bx-first-page" data-inline="false"></span></a>
+                            </div>
+
+                        </li>
+                        <li (click)="setPage(pager.currentPage - 1)">
+                            <div class="text d-flex align-items-center justify-content-center"
+                                [ngClass]="{disabled:pager.currentPage === 1}">
+                                <a><span class="iconify" data-icon="bx-bx-chevron-left" data-inline="false"></span></a>
+                            </div>
+                        </li>
+                        <li *ngFor="let page of pager.pages" (click)="setPage(page)">
+                            <div class="num d-flex align-items-center justify-content-center"
+                                [ngClass]="{active:pager.currentPage === page}">
+                                <a>{{page}}</a>
+                            </div>
+                        </li>
+                        <li (click)="setPage(pager.currentPage + 1)">
+                            <div class="text d-flex align-items-center justify-content-center"
+                                [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                                <a><span class="iconify" data-icon="bx-bx-chevron-right" data-inline="false"></span></a>
+                            </div>
+                        </li>
+                        <li (click)="setPage(pager.totalPages)">
+                            <div class="text d-flex align-items-center justify-content-center"
+                                [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                                <a><span class="iconify" data-icon="bx-bx-last-page" data-inline="false"></span></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

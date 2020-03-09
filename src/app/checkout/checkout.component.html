@@ -1,0 +1,120 @@
+<div *ngIf="isLoading || isCartItemsLoading || isFormLoading">
+    <app-page-loading-spinner></app-page-loading-spinner>
+</div>
+<section>
+    <div class="container">
+        <h2 class="text-center title mb-4">Check Out</h2>
+        <div class="row">
+            <div class="order-lg-1 order-2 col-lg-6 d-flex form-col">
+                <div class="form-section">
+                    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+                        <h5 class="mb-3">Shipping Address: </h5>
+                        <div class="row no-gutters">
+                            <div class="col-6">
+                                <div class="form-group mr-1">
+                                    <input type="text" formControlName="firstName" class="form-control" id="firstName"
+                                        placeholder="First name">
+                                </div>
+                                <div class="invalid-label-container" *ngIf="checkoutForm.get('firstName').touched && checkoutForm.get('firstName').dirty && checkoutForm.hasError('required', 'firstName')">
+                                    <label  for="email" class="invalid-label">Required</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group ml-1">
+                                    <input type="text" formControlName="lastName" class="form-control" id="lastName"
+                                        placeholder="Last name">
+                                </div>
+                                <div class="invalid-label-container" *ngIf="checkoutForm.get('lastName').touched && checkoutForm.get('lastName').dirty && checkoutForm.hasError('required', 'lastName')">
+                                    <label  for="email" class="invalid-label">Required</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" formControlName="email" class="form-control" id="email"
+                                placeholder="E-mail">
+                        </div>
+
+                        <div class="invalid-label-container" *ngIf="checkoutForm.get('email').touched && checkoutForm.get('email').dirty && checkoutForm.hasError('required', 'email')">
+                            <label  for="email" class="invalid-label">Required</label>
+                        </div>
+                        <div class="invalid-label-container" *ngIf="checkoutForm.get('email').touched && checkoutForm.get('email').dirty && checkoutForm.hasError('email', 'email')">
+                            <label  for="email" class="invalid-label">Please enter a valid email address.</label>
+                        </div>
+
+                        <h5 class="mb-3">Contact: </h5>
+
+                        <div class="form-group">
+                            <input type="number" formControlName="contactNumber" class="form-control" id="contactNumber"
+                                placeholder="Contact number">
+                        </div>
+                        <div class="invalid-label-container" *ngIf="checkoutForm.get('contactNumber').touched && checkoutForm.get('contactNumber').dirty && checkoutForm.hasError('required', 'contactNumber')">
+                            <label  for="email" class="invalid-label">Required</label>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea class="form-control" formControlName="deliveryAddress" id="deliveryAddress"
+                                rows="3"></textarea>
+                        </div>
+                        <div class="invalid-label-container" *ngIf="checkoutForm.get('deliveryAddress').touched && checkoutForm.get('deliveryAddress').dirty && checkoutForm.hasError('required', 'deliveryAddress')">
+                            <label  for="email" class="invalid-label">Required</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-block checkout-btn" [disabled]="!checkoutForm.valid">Checkout via Stripe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="order-lg-2 order-1 col-lg-6 d-flex summary-col">
+                <div class="mb-4 summary-section">
+                    <div class="orders">
+                        <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
+                            {{ errorMsg }}
+                          </div>
+                        <div class="d-flex justify-content-between">
+                            <h6 class=" order-summary-header" type="button" data-toggle="collapse"
+                            data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            Order Summary:
+                        </h6>
+                        <h6 class="font-weight-bold order-summary-header"> ₱{{ (cartTotal / 100 | number:'.2') }}</h6>
+                        </div>
+
+
+                        <div class="collapse mt-3 show" id="collapseExample">
+                            <div>
+                                <div class="checkout-item" *ngFor="let checkoutItem of checkoutItems">
+                                    <div class="row">
+                                        <div class="col-6 d-flex align-items-center justify-content-center">
+                                            <img class="checkout-item-img img-fluid" src="{{ checkoutItem.imgUrl }}" alt="">
+                                        </div>
+                                        <div class="col-6 d-flex align-items-center">
+                                            <div>
+                                                <p class="text-capitalize font-weight-bold m-0">
+                                                    {{ checkoutItem.quantity }} x {{ checkoutItem.productName }}</p>
+                                                <p class="m-0">
+                                                    ₱{{ (checkoutItem.total | number:'.2') }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-4">
+                                    <div class="col-6">Subtotal: </div>
+                                    <div class="col-6 text-right font-weight-bold">₱{{ (cartTotal / 100 | number:'.2') }}</div>
+                                    <div class="col-6">Discounts: </div>
+                                    <div class="col-6 text-right font-weight-bold">₱0</div>
+                                    <div class="my-4" style="border-top: 1px solid #e9e9e9; width: 100%;"></div>
+                                    <div class="col-6">Total: </div>
+                                    <div class="col-6 text-right font-weight-bold">₱{{ (cartTotal / 100 | number:'.2') }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+

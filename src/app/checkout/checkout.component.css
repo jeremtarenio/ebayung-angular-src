@@ -1,0 +1,162 @@
+.title {
+  letter-spacing: 1px;
+}
+
+.btn:focus {
+  box-shadow: none;
+  outline: 0;
+}
+
+
+
+section {
+  background: url("../../assets/svg/method-draw-image v2.svg");
+  background-size: 46vw;
+  background-position: bottom;
+  background-color: #f1f3ec;
+  background-repeat: repeat-x;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.summary-section {
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  font-size: 0.8rem;
+}
+
+.checkout-item-img {
+  max-width: 100px;
+}
+
+.checkout-item {
+  border-bottom: 1px solid #e9e9e9;
+}
+
+.container {
+  max-width: 95%;
+}
+
+.order-summary-button {
+  text-decoration: underline;
+}
+
+.checkout-btn {
+  background: #f2a231;
+  color: white;
+  border-radius: 0;
+}
+
+form .ng-dirty.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.invalid-label.other {
+  margin-bottom: 0rem;
+}
+
+.invalid-label-container {
+  margin-top: -0.9rem;
+}
+
+.invalid-label {
+  font-size: 0.8rem;
+}
+
+.invalid-label {
+  color: red;
+  margin-bottom: 1rem;
+  margin-left: 0.35rem;
+}
+
+.form-section-mobile {
+  display: initial;
+}
+
+input, textarea {
+  font-family: "Segoe UI";
+}
+
+.form-section-desktop {
+  display: none;
+}
+
+.summary-col,
+.form-col {
+  justify-content: center;
+}
+
+.summary-section,
+.form-section {
+  width: 100%;
+}
+
+.form-section {
+  max-width: initial;
+}
+
+.order-summary-header {
+  font-size: 0.9rem;
+}
+
+@media screen and (min-width: 376px) {
+  .summary-section {
+    font-size: 1rem;
+  }
+
+  .order-summary-header {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .container {
+    width: 85%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .summary-section {
+    max-width: 90%;
+  }
+
+  .form-section {
+    max-width: 90%;
+  }
+
+  section {
+    background-size: 11.9rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+
+
+  section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .summary-section {
+    max-width: 400px;
+  }
+
+  .form-section {
+    max-width: 420px;
+  }
+
+  .summary-col {
+    justify-content: flex-start;
+    padding-left: 25px;
+  }
+
+  .form-col {
+    justify-content: flex-end;
+    padding-right: 25px;
+  }
+
+  section {
+    background-size: 11.9rem;
+  }
+}

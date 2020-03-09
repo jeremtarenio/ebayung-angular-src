@@ -1,0 +1,133 @@
+<div class="top-hack" #top>a</div>
+
+<div *ngIf="loading">Loading...</div>
+<div class="container" *ngIf="!loading">
+    <div class="row justify-content-center">
+        <div class="col form-col">
+            <div>
+                <div class="alert alert-success" role="alert" *ngIf="success">
+                    {{ successMsg }}
+                  </div>
+                  <div class="alert alert-danger" role="alert" *ngIf="error">
+                    Action failed. {{ errorMsg }}
+                  </div>
+                <form [formGroup]="newProductForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="productName">Product name: </label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="email"
+                            placeholder=""
+                            formControlName="productName"
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="productPrice">Price: </label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="productPrice"
+                            placeholder=""
+                            formControlName="price"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="desc1">Description 1:</label>
+                        <textarea
+                            class="form-control"
+                            id="desc1"
+                            rows="3"
+                            formControlName="desc1"
+                        ></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="desc2">Description 2:</label>
+                        <textarea
+                            class="form-control"
+                            id="desc2"
+                            rows="3"
+                            formControlName="desc2"
+                        ></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="desc3">Description 3:</label>
+                        <textarea
+                            class="form-control"
+                            id="desc3"
+                            rows="3"
+                            formControlName="desc3"
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Category: </label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="category"
+                            placeholder=""
+                            formControlName="category"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subcategory">Subcategory: </label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="subcategory"
+                            placeholder=""
+                            formControlName="subcategory"
+                        >
+                    </div>
+
+
+                    <div class="form-group" formArrayName="imgUrls">
+                        <label for="imgUrls" class="array-form-label">Image URLs: <span (click)="onAddImageURL()" class="add-btn">Add One More</span></label>
+                        <div
+                            class="d-flex justify-content-between mb-3"
+                            *ngFor="let imageURL of newProductForm.get('imgUrls')['controls']; let imageURLIndex = index"
+                        >
+                            <input
+                            type="text"
+                            class="form-control mr-3"
+                            placeholder="URL {{ imageURLIndex + 1 }}"
+                            [formControlName]="imageURLIndex"
+                            >
+                            <span class="btn remove-btn" (click)="onRemoveImgUrl(imageURLIndex)">Remove</span>
+                        </div>
+
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <select class="form-control" id="keywords">
+                            <option disabled>Keyword</option>
+                          <option *ngFor="let keyword of keywords" value="{{ keyword.id }}">{{ keyword.keyword }}</option>
+                        </select>
+                    </div> -->
+
+
+                    <div class="form-group" formArrayName="keywords">
+                        <label for="keywords" class="array-form-label">Keywords: <span (click)="onAddKeyword()" class="add-btn">Add One More</span></label>
+                        <div
+                            class="d-flex justify-content-between mb-3"
+                            *ngFor="let keyword of newProductForm.get('keywords')['controls']; let keywordIndex = index"
+                        >
+                            <!-- <input type="text" class="form-control mr-3" placeholder="Keyword {{ keywordIndex + 1 }}" [formControlName]="keywordIndex"> -->
+
+                            <select class="form-control"  id="keywords" [formControlName]="keywordIndex">
+                              <option *ngFor="let keyword of keywords" value="{{ keyword.id }}">{{ keyword.keyword }}</option>
+                            </select>
+                            <span
+                                class="btn remove-btn" (click)="onRemoveKeyword(keywordIndex)">Remove</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn my-button mt-4" (click)="onSubmit()">{{ editMode ? 'Update' : 'Add' }} Product</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

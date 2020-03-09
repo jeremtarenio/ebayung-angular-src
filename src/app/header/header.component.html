@@ -1,0 +1,41 @@
+<section class="first-layer-section">
+    <div class="container a">
+        <div class="first-layer text-right" [ngStyle]="{ height: firstLayerHidden ? '0' : '27px' }" [ngClass]="{ 'py-1': firstLayerHidden ? false : true }">
+            <a style="cursor: pointer;">Contact Us<span class="mx-2">|</span></a>
+            <a routerLink="account/dashboard" *ngIf="isLoggedIn">Account<span class="mx-2">|</span></a>
+            <a href="" *ngIf="isLoggedIn" (click)="onLogout()">Logout</a>
+            <a routerLink="account/login" *ngIf="!isLoggedIn">Login<span class="mx-2">|</span></a>
+            <a routerLink="account/register" *ngIf="!isLoggedIn">Register</a>
+        </div>
+    </div>
+</section>
+
+<div class="header-desktop">
+    <app-main></app-main>
+    <app-categories></app-categories>
+</div>
+
+
+<div class="added-msg" [ngClass]="isAddedMsgVisible ? 'visible' : 'hidden'" [ngStyle]="{'transform': navOpened ? 'translateX(300px)' : 'translateX(0px)'}">
+    <div class="container px-0">
+        <div class="row no-gutters">
+            <div class="col-10" *ngIf="productName !== 'checkout'"><span class="font-weight-bold text-capitalize">{{ productName }}</span> added to cart.</div>
+            <div class="col-10" *ngIf="productName === 'checkout'">Payment successful. Thank you for your purchase.</div>
+            <div class="col-2 text-right d-flex align-items-center justify-content-end" (click)="hideAddMsg()"> <span class="font-weight-bold close-btn">X</span> </div>
+        </div>
+    </div>
+</div>
+
+<div class="added-msg white hidden" [ngStyle]="{'transform': navOpened ? 'translateX(300px)' : 'translateX(0px)'}">
+    <div class="container px-0">
+        <div class="row no-gutters">
+            <div class="col-10">.</div>
+            <div class="col-2 text-right d-flex align-items-center justify-content-end"> <span class="font-weight-bold close-btn">.</span> </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,321 @@
+<div *ngIf="isLoading">
+  <app-page-loading-spinner></app-page-loading-spinner>
+</div>
+
+<div class="container">
+  <div class="row py-3 d-flex justify-content-center" style="position: relative;">
+    <div class="col-12">
+      <p class="path text-capitalize">Home / Products / {{ product.name }}</p>
+      <div class="row">
+        <div class="col-lg-6 col-md-12">
+          <img *ngFor="let imgUrl of imgUrls" src="{{ imgUrl.imgUrl }}" alt="" class="active-product-img img-fluid"
+            [ngClass]="isActive(imgUrl.imgUrl) ? 'active' : ''">
+          <img src="{{ activeImg }}" alt="" class="img-fluid" style="opacity: 0;">
+          <div class="product-gallery" style="z-index: 999; position: relative;">
+            <img *ngFor="let imgUrl of imgUrls" src="{{ imgUrl.imgUrl }}" alt="" class="other-img"
+              [ngClass]="isActive(imgUrl.imgUrl) ? 'img-active' : ''" (click)="onSelectImg(imgUrl.imgUrl)">
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <h2 class="product-title text-capitalize">{{ product.name }}</h2>
+          <div class="d-flex review-container">
+            <div class="star-ratings-css">
+              <div class="star-ratings-css-top" [ngStyle]="{'width': (product.averageRating * 20) + '%'}">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+              <div class="star-ratings-css-bottom">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+            </div>
+            <p class="review-count m-0 ml-2">{{ product.noOfRatings }} Reviews</p>
+          </div>
+          <h4 class="product-price">₱{{ product.price }}</h4>
+
+          <div class="row mb-3">
+            <div class="col-4 test1">
+              <div class="row m-0 text-center no-gutters quantity-section">
+                <div class="col-4"><button class="btn btn-block quantity-button"
+                    (click)="onDecrementAmount()">−</button>
+                </div>
+                <div class="col-4 amount d-flex align-items-center justify-content-center"><input type="text"
+                    name="amount" class="amount-input" (change)="onChange($event)" [(ngModel)]="amount"></div>
+                <div class="col-4"><button class="btn btn-block quantity-button"
+                    (click)="onIncrementAmount()">+</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-8 test2"><button class="btn add-to-cart" (click)="onAddToCart(product.id, product.name)"
+                [disabled]="isAddToCartLoading">{{ isAddToCartLoading ? 'Adding...' : 'Add To Bayung' }}
+                <img class="add-spinner" src="assets/gifs/loading-white.svg" alt="" *ngIf="isAddToCartLoading">
+              </button></div>
+          </div>
+
+          <h4 class="product-information">Product Information:</h4>
+
+          <div class="accordion mb-5" id="accordionExample">
+            <div class="card" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
+              aria-controls="collapseOne">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0 d-flex justify-content-between align-items-center">
+                  <button class="btn btn-link collapsed accsec-title" type="button">
+                    Description
+                  </button>
+                  <svg class="iconify mr-2 acc-arrow" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em"
+                    height="1em"
+                    style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                    preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20" _ngcontent-ixb-c1=""
+                    data-icon="dashicons-arrow-right-alt2" data-inline="false">
+                    <path d="M6 15l5-5l-5-5l1-2l7 7l-7 7z" fill="currentColor"></path>
+                  </svg>
+                </h5>
+              </div>
+
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                  {{ product.productDesc1 }}
+                </div>
+              </div>
+            </div>
+            <div class="card" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+              aria-controls="collapseTwo">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0 d-flex justify-content-between align-items-center">
+                  <button class="btn btn-link collapsed accsec-title" type="button">
+                    Usage
+                  </button>
+                  <svg class="iconify mr-2 acc-arrow" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em"
+                    height="1em"
+                    style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                    preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20" _ngcontent-ixb-c1=""
+                    data-icon="dashicons-arrow-right-alt2" data-inline="false">
+                    <path d="M6 15l5-5l-5-5l1-2l7 7l-7 7z" fill="currentColor"></path>
+                  </svg>
+                </h5>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                  {{ product.productDesc2 }}
+                </div>
+              </div>
+            </div>
+            <div class="card" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+              aria-controls="collapseThree">
+              <div class="card-header" id="headingThree">
+                <h5 class="mb-0 d-flex justify-content-between align-items-center">
+                  <button class="btn btn-link collapsed accsec-title" type="button">
+                    Brand Details
+                  </button>
+                  <svg class="iconify mr-2 acc-arrow" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em"
+                    height="1em"
+                    style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                    preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20" _ngcontent-ixb-c1=""
+                    data-icon="dashicons-arrow-right-alt2" data-inline="false">
+                    <path d="M6 15l5-5l-5-5l1-2l7 7l-7 7z" fill="currentColor"></path>
+                  </svg>
+                </h5>
+              </div>
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                  {{ product.productDesc3 }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h4 class="product-information mb-3">Ratings and reviews: </h4>
+
+      <div class="row review-section no-gutters d-flex align-items-center">
+        <div class="col-lg-3 overall-rating-container mb-2">
+          <div class="row">
+            <div class="col-lg-12 col-3">
+              <span
+                class="overall-rating d-flex justify-content-center align-items-center">{{ product.averageRating.toFixed(1) }}</span>
+            </div>
+            <div class="col-lg-12 col-9">
+              <div class="star-ratings-css overall-star-rating">
+                <div class="star-ratings-css-top" [ngStyle]="{'width': (product.averageRating * 20) + '%'}">
+                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <div class="star-ratings-css-bottom">
+                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="col-lg-6">
+          <div class="star-rating-tally mb-3">
+            <div class="stars d-flex h-100 align-items-center">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span class="mr-2">★</span>
+              <div class="rating-percentage-container mr-2">
+                <div class="rating-percentage-fill" [ngStyle]="{'width': getPercentage(5) + '%'}"></div> <!--  -->
+              </div>
+              <p class="rating-percentage-number mb-0" style="width: 10%">{{ countGatheredStars(5) }}</p>
+            </div>
+            <div class="stars d-flex h-100 align-items-center">
+              <span style="opacity: 0;">★</span><span>★</span><span>★</span><span>★</span><span class="mr-2">★</span>
+              <div class="rating-percentage-container mr-2">
+                <div class="rating-percentage-fill" [ngStyle]="{'width': getPercentage(4)  + '%'}"></div> <!--  -->
+              </div>
+              <p class="rating-percentage-number mb-0" style="width: 10%">{{ countGatheredStars(4) }}</p>
+            </div>
+            <div class="stars d-flex h-100 align-items-center">
+              <span style="opacity: 0;">★</span><span style="opacity: 0;">★</span><span>★</span><span>★</span><span
+                class="mr-2">★</span>
+              <div class="rating-percentage-container mr-2">
+                <div class="rating-percentage-fill" [ngStyle]="{'width': getPercentage(3) + '%'}"></div>
+              </div>
+              <p class="rating-percentage-number mb-0" style="width: 10%">{{ countGatheredStars(3) }}</p>
+            </div>
+            <div class="stars d-flex h-100 align-items-center">
+              <span style="opacity: 0;">★</span><span style="opacity: 0;">★</span><span
+                style="opacity: 0;">★</span><span>★</span><span class="mr-2">★</span>
+              <div class="rating-percentage-container mr-2">
+                <div class="rating-percentage-fill" [ngStyle]="{'width': getPercentage(2) + '%'}"></div>
+              </div>
+              <p class="rating-percentage-number mb-0" style="width: 10%">{{ countGatheredStars(2) }}</p>
+            </div>
+            <div class="stars d-flex h-100 align-items-center">
+              <span style="opacity: 0;">★</span><span style="opacity: 0;">★</span><span
+                style="opacity: 0;">★</span><span style="opacity: 0;">★</span><span class="mr-2">★</span>
+              <div class="rating-percentage-container mr-2">
+                <div class="rating-percentage-fill" [ngStyle]="{'width': getPercentage(1) + '%'}"></div>
+              </div>
+              <p class="rating-percentage-number mb-0" style="width: 10%">{{ countGatheredStars(1) }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 number-of-raters-container">
+          <div class="row align-items-center">
+            <div class="col-lg-12 col-3">
+              <span
+                class="overall-rating number-of-raters d-flex justify-content-center align-items-center">{{ product.noOfRatings }}</span>
+            </div>
+            <div class="col-lg-12 col-9 pl-0">
+              <div>
+                <p class="m-0 number-of-raters-caption">Customers rated this product</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="your-review-container-mobile">
+        <p class="mb-3 your-rating-title">Your rating and review:</p>
+        <div class="your-review-section mb-5">
+          <div class="d-flex justify-content-center mb-2">
+            <div class="star-ratings-css your-review">
+              <div class="star-ratings-css-top" [ngStyle]="{'width': 0 + '%'}">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+              <div class="star-ratings-css-bottom">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            </div>
+          </div>
+          <button class="btn btn-block leave-a-review-btn">Leave a review</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-7">
+          <p class="customer-reviews-title">Customer reviews ({{ product.noOfRatings }})</p>
+          <div *ngIf="reviews.length !== 0">
+            <div class="d-flex justify-content-between">
+              <div class="mr-2" style="height: 32px">
+                <label for="sortByOptions" class="mr-2 sort-by">Sort by: </label>
+                <select #t (change)="onSortBy(t)" class="custom-select sort-dropdown options" id="sortByOptions">
+                  <option selected value="date" [selected]="activeSort === 'date_time'">Most recent</option>
+                  <option value="helpfulPoints" [selected]="activeSort === 'helpfulPoints'">Most helpful</option>
+                  <option value="highestRated" [selected]="activeSort === 'rating' && activeOrder === 'DESC'">Highest
+                    rated</option>
+                  <option value="lowestRated" [selected]="activeSort === 'rating' && activeOrder === 'ASC'">Lowest rated
+                  </option>
+                </select>
+              </div>
+
+              <div class="d-flex align-items-center">
+                <button class="next-page mr-2" (click)="setPage(pager.currentPage - 1)" *ngIf="pager.currentPage > 1">
+                  < </button>
+                    <input type="text" class="form-control page-input text-center mr-2" value="{{ pager.currentPage }}">
+                    <button class="next-page" (click)="setPage(pager.currentPage + 1)"
+                      [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                      >
+                    </button>
+              </div>
+            </div>
+
+            <div *ngIf="reviewsLoading" class="py-5" style="height: 1000px;">
+              <p>Loading reviews...</p>
+            </div>
+
+            <div *ngIf="!reviewsLoading">
+              <div class="user-review-container py-4" *ngFor="let review of pagedReviews">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="star-ratings-css user-review-stars">
+                    <div class="star-ratings-css-top" [ngStyle]="{'width': review.rating * 20 + '%'}">
+                      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                    <div class="star-ratings-css-bottom">
+                      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                  </div>
+                  <span class="caption">{{ review.date }} by <a class="poster">{{ review.user }}</a></span>
+                </div>
+                <p class="user-review-title">{{ review.title }}</p>
+                <p class="user-review-description">{{ review.description }}</p>
+                <div class="text-right">
+                  <span class="caption">Was this helpful? <a class="poster mr-2">Yes</a> <a class="poster">No</a></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <div class="mr-2" style="height: 32px">
+                <label for="sortByOptions" class="mr-2 sort-by">Sort by: </label>
+                <select #w (change)="onSortBy(w)" class="custom-select sort-dropdown options" id="sortByOptions">
+                  <option selected value="date" [selected]="activeSort === 'date_time'">Most recent</option>
+                  <option value="helpfulPoints" [selected]="activeSort === 'helpfulPoints'">Most helpful</option>
+                  <option value="highestRated" [selected]="activeSort === 'rating' && activeOrder === 'DESC'">Highest
+                    rated</option>
+                  <option value="lowestRated" [selected]="activeSort === 'rating' && activeOrder === 'ASC'">Lowest rated
+                  </option>
+                </select>
+              </div>
+
+              <div class="d-flex align-items-center">
+                <button class="next-page mr-2" (click)="setPage(pager.currentPage - 1)" *ngIf="pager.currentPage > 1">
+                  < </button>
+                    <input type="text" class="form-control page-input text-center mr-2" value="{{ pager.currentPage }}">
+                    <button class="next-page" (click)="setPage(pager.currentPage + 1)"
+                      [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                      >
+                    </button>
+              </div>
+          </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="your-review-container-desktop">
+            <p class="mb-3 your-rating-title">Your rating and review:</p>
+            <div class="your-review-section mb-5">
+              <div class="d-flex justify-content-center mb-2">
+                <div class="star-ratings-css your-review">
+                  <div class="star-ratings-css-top" [ngStyle]="{'width': 0 + '%'}">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                  <div class="star-ratings-css-bottom">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                </div>
+              </div>
+              <button class="btn btn-block leave-a-review-btn">Leave a review</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+section {
+    overflow: hidden;
+}
+.logo {
+    font-size: 9rem;
+    color: #F2A231;
+}
+
+.step {
+    margin-bottom: 1.5rem;
+}
+
+.illus { 
+        max-width: 150px;
+        height:auto;
+}
+
+@media screen and (min-width:768px) { /* means 992 and ABOVE */
+    .step {
+        margin-bottom: auto;
+    }
+
+    .container{
+        max-width: 100%;
+    }
+}
+
+
+
+@media screen and (min-width:992px) { /* means 992 and ABOVE */
+    .step {
+        margin-bottom: auto;
+    }
+
+    .container{
+        max-width: 1400px;
+    }
+}

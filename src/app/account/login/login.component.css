@@ -1,0 +1,184 @@
+.title {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 3px;
+  margin-bottom: 2rem;
+}
+
+.container {
+  max-width: 90%;
+  min-height: calc(100vh - 55.98px);
+  height: 100%;
+}
+
+section {
+  background: url("../../../assets/svg/method-draw-image v2.svg");
+  background-size: 46vw;
+  background-position: bottom;
+  background-color: #f1f3ec;
+  background-repeat: repeat-x;
+}
+
+.form-container {
+  padding: 0;
+  box-shadow: 0;
+  background: inital;
+}
+
+.user-icon {
+  font-size: 41vw;
+  color: #767d6b;
+  margin-bottom: 3rem;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.caption {
+  font-weight: bold;
+}
+
+.caption .pd {
+  color: #767d6b;
+}
+
+.caption .ri {
+  color: #f2a231;
+}
+
+.sign-up-btn {
+  background: #f2a231;
+  color: white;
+  border-radius: 0;
+  margin-bottom: 1rem;
+}
+
+.form-link {
+  color: #f2a231;
+  font-weight: bold;
+}
+
+.sign-up-label {
+  display: block;
+}
+
+.sign-up-label,
+.invalid-label,
+.verifying-label {
+  font-size: 0.8rem;
+}
+
+.invalid-label,
+.verifying-label {
+  color: red;
+  margin-bottom: 1rem;
+  margin-left: 0.35rem;
+}
+
+.verifying-label {
+  color: green;
+}
+
+.invalid-label.other {
+  margin-bottom: 0rem;
+}
+
+.invalid-label-container {
+  margin-top: -0.9rem;
+}
+
+.invalid-label-container.password {
+  margin-top: -0.66rem;
+}
+
+.invalid-label-container.other {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+
+form .ng-dirty.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.eye {
+  float: right;
+  margin-top: -27.7px;
+  margin-right: 13.3px;
+  position: relative;
+  z-index: 2;
+  font-weight: bold;
+  color: #f2a231;
+  font-size: 0.8rem;
+}
+
+.pw-input {
+  padding-right: 24.2vw;
+}
+
+.login-illus {
+  display: none!important;
+}
+
+@media screen and (min-width: 376px) {
+  .container {
+    padding-bottom: 9rem;
+    padding-top: 6rem;
+  }
+}
+
+@media screen and (min-width: 612px) {
+  .user-icon {
+    font-size: 170px;
+
+  }
+}
+
+@media screen and (min-width: 768px) {
+  section {
+    background-size: 11.9rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .login-illus {
+    display: flex!important;
+  }
+
+  /* section {
+    height: calc(100vh - 145px);
+
+  } */
+
+  .container {
+    /* max-height: calc(100vh - 145px); */
+    max-width: 90%;
+    padding-bottom: 8rem;
+    padding-top: 5rem;
+    min-height: calc(100vh - 145px);
+    height: 100%;
+  }
+
+  .form-container {
+    width: 28rem;
+    margin: 0 auto;
+    padding: 3rem;
+    box-shadow: 0px 3px 10.4px 1px rgba(0, 0, 0, 0.15);
+    background: #ffffff;
+    border-radius: 8px;
+  }
+
+  .pw-input {
+    padding-right: 4.4rem;
+  }
+
+  section {
+    background-size: 11.9rem;
+  }
+
+  img {
+    height: 24rem;
+    width: 42rem;
+  }
+}

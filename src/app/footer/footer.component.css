@@ -1,0 +1,51 @@
+footer {
+    background: rgb(243, 240, 236);
+    
+}
+
+h5 {
+    letter-spacing: 1.5px;
+    font-family: 'Josefin Sans';
+    color: #767D6B;
+}
+
+p {
+    margin-bottom: 0.1rem;
+}
+
+.icons {
+    font-size: 2rem;
+    color: #F2A231;
+}
+
+.footer-column {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 2rem;
+}
+
+
+.container{
+    max-width: 80%;
+}
+
+.mobile-only-container {
+    display: initial;
+}
+
+
+@media screen and (min-width:992px) { /* means 992 and ABOVE */
+    .container{
+        max-width: 1000px;
+    }
+
+    .footer-column {
+        display: flex;
+        justify-content: center;
+    }
+
+    .mobile-only-container {
+        display: none;
+    }
+    
+}

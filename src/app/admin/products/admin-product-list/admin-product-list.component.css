@@ -1,0 +1,31 @@
+table {
+    font-size: 0.8rem;
+    background: white;
+}
+
+thead {
+    background: #767D6B;
+    color: white;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #F1F3EC;
+}
+
+.table thead th {
+    border-bottom: 0;
+}
+.table td, .table th {
+    border-top: 0;
+}
+
+td a {
+    cursor: pointer;
+}
+
+
+
+/* .table-responsive {
+    display: table;
+}
+ */

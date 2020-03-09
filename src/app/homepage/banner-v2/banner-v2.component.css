@@ -1,0 +1,99 @@
+#bannerv2 {
+    background: url(../../../assets/svg/salad.svg);
+    background-color: #F1F3EC;
+    background-repeat: no-repeat;
+    background-position: 50% 100%;
+    background-size: 370px;
+    height: calc(100vh - 42.98px);
+    overflow-y: hidden;
+}
+
+.jumbotron {
+    background: none;
+    padding-top: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   /*  width: 50%; */
+}
+
+.banner-title {
+    margin-bottom: 0rem;
+    text-align: center;
+    font-size: 2.2rem;
+}
+
+.lead {
+    font-size: 1.1rem;
+}
+
+.banner-v2 {
+    width: initial;
+}
+
+@media screen and (min-width:376px) { /* means 576 and ABOVE */
+    #bannerv2 {
+        background-position: 50% 100%;
+        background-size: 550px;
+    }
+
+    .banner-title {
+        font-size: 2.8rem;
+    }
+
+
+    .lead {
+        font-size: 1.25rem;
+    }
+
+    .jumbotron {
+        padding-top: 40%;
+    }
+
+}
+
+@media screen and (min-width:768px) { /* means 768 and ABOVE */
+    .jumbotron {
+        padding-top: 100px;
+    }
+
+    #bannerv2 {
+        background-position: 50% 100%;
+        background-size: 700px;
+        height: 800px;
+    }
+
+    .banner-title {
+        font-size: 4rem;
+    }
+
+}
+
+@media screen and (min-width:992px) { /* means 992 and ABOVE */
+    .banner-v2 {
+        width: 1400px;
+    }
+
+    #bannerv2 {
+        background-position: 80% 100%;
+        background-size: 500px;
+        height: 450px;
+    }
+
+    .jumbotron {
+        justify-content: start;
+        align-items: start;
+    }
+
+    .lead {
+        width: 400px
+    }
+
+}
+
+@media screen and (min-width:1500px) { /* means 992 and ABOVE */
+    .lead {
+        width: initial;
+    }
+
+}

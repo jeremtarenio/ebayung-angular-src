@@ -1,0 +1,26 @@
+<section class="py-4">
+    <div class="container">
+        <h2 class="title">My Account</h2>
+        <div class="row">
+            <div class="col-12 mb-5">
+                <!-- <div routerLinkActive="active" routerLink="dashboard"><p>Dashboard</p></div>
+                <div routerLinkActive="active" routerLink="orders"><p>Orders</p></div>
+                <div><p>Logout</p></div> -->
+                <ul class="nav nav-tabs no-gutters">
+                    <li class="nav-item col-4">
+                      <a class="nav-link" routerLinkActive="active" routerLink="dashboard"><span class="iconify" data-icon="bx-bxs-dashboard" data-inline="false"></span> Dashboard</a>
+                    </li>
+                    <li class="nav-item col-4">
+                      <a class="nav-link" routerLinkActive="active" routerLink="profile"><span class="iconify" data-icon="vs-profile" data-inline="false"></span> Profile</a>
+                    </li>
+                    <li class="nav-item col-4">
+                      <a class="nav-link" routerLinkActive="active" routerLink="orders"><span class="iconify" data-icon="bx-bxs-shopping-bags" data-inline="false"></span> Orders</a>
+                    </li>
+                  </ul>
+            </div>
+            <div class="col-12">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</section>

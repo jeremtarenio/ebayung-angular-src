@@ -1,0 +1,91 @@
+* {
+  font-family: "Segoe UI";
+  font-size: 12px;
+}
+
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.title {
+  letter-spacing: 1px;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.container {
+  min-height: 460px;
+}
+
+.nav-item a {
+  color: black;
+}
+
+.container {
+  max-width: 95%;
+  font-size: 0.8rem;
+}
+
+/* .nav-item {
+  width: 20%;
+  text-align: center;
+}
+ */
+.nav-tabs .nav-link {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+
+.nav-tabs .nav-link.active {
+  border-color: orange #dee2e6 #fff;
+  border-top: 2px solid orange;
+}
+
+.nav.nav-tabs {
+  text-align: center;
+}
+
+.nav-link:hover {
+  border-color: white white orange;
+}
+
+.nav-link {
+  display: block;
+  padding: .5rem 0.5rem;
+}
+
+
+.iconify {
+  margin-bottom: 0.2rem;
+}
+
+@media screen and (min-width: 376px) {
+  .container {
+    font-size: 1rem;
+  }
+
+  * {
+    font-size: 0.8rem;
+  }
+
+}
+
+@media screen and (min-width: 992px) {
+  /* means 992 and ABOVE */
+  * {
+    font-size: 1rem;
+  }
+
+}
+
+
+@media screen and (min-width: 1285px) {
+  /* means 992 and ABOVE */
+  .container {
+    max-width: 1200px;
+  }
+}

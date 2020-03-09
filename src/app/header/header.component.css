@@ -1,0 +1,83 @@
+.header-desktop {
+  position: fixed;
+  width: 100vw;
+  z-index: 99;
+  /* -webkit-box-shadow: 2px 7px 5px -4px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 2px 7px 5px -4px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 7px 5px -4px rgba(0, 0, 0, 0.25); */
+}
+
+.container.a {
+  width: 65vw;
+}
+
+.first-layer {
+  font-size: 0.8rem;
+  transition: 0.2s;
+}
+
+.first-layer a,
+.first-layer span {
+  color: black;
+}
+
+section {
+  background: #e6e6e6;
+  display: none;
+}
+
+.added-msg {
+  background: #e8f5dd;
+  padding: 0.8rem;
+  position: fixed;
+  width: 100vw;
+  z-index: 2;
+  transition: 0.3s;
+}
+
+.added-msg.red {
+  background: #f5dddd;
+}
+
+.added-msg.white {
+  background: #E6E6E6;
+}
+
+.added-msg.visible {
+  padding-top: calc(55.98px + 0.8rem);
+}
+
+.added-msg.hidden {
+  margin-top: -106px;
+}
+
+.first-layer-section {
+  position: relative;
+  z-index: 3;
+}
+
+.close-btn {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 992px) {
+  /* means 992 and ABOVE */
+  section {
+    display: block;
+  }
+
+  .added-msg.visible {
+    padding-top: calc(118px + 0.8rem);
+  }
+
+  .added-msg.hidden {
+    margin-top: -46px;
+  }
+}
+
+@media screen and (min-width: 1285px) {
+  /* means 992 and ABOVE */
+  .added-msg .container {
+    max-width: 1200px;
+  }
+}

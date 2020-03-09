@@ -1,0 +1,101 @@
+.separator {
+  height: 1px;
+  width: 100%;
+  background: rgb(211, 211, 211);
+}
+
+.container {
+  max-width: 100%;
+  padding: 0;
+}
+
+.form-control, .my-button {
+  border-radius: 0;
+}
+
+.form-control {
+  border: 0;
+  background: #f0f0f0;
+  border-bottom: 1px solid gainsboro;
+}
+
+.btn-success {
+  padding: 0.175rem .75rem;
+}
+
+* {
+  font-size: 10.1px;
+}
+
+.array-form-label {
+  margin-bottom: 1rem;
+}
+
+.add-btn {
+  color: green;
+  margin-left: 1rem;
+}
+
+.remove-btn {
+  color: red;
+}
+
+.add-btn, .remove-btn {
+  cursor: pointer;
+}
+
+.form-control.ng-dirty.ng-valid {
+  border: 1px solid #58c458;
+}
+
+.form-control.ng-dirty.ng-invalid {
+  border: 1px solid red;
+}
+
+.top-hack {
+  top: 0;
+  margin-top: -1.5rem;
+  width: 1px;
+  opacity: 0;
+}
+
+@media screen and (min-width: 376px) {
+  * {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (min-width: 576px) {
+    .form-col {
+      max-width: 100%;
+    }
+  }
+
+@media screen and (min-width: 768px) {
+    .form-col {
+      max-width: 90%;
+    }
+  }
+
+@media screen and (min-width: 992px) {
+  .form-col {
+    max-width: 80%;
+  }
+
+  * {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+    .form-col {
+      max-width: 70%;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .form-col {
+      max-width: 60%;
+    }
+}
+

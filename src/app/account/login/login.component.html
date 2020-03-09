@@ -1,0 +1,64 @@
+<section>
+
+    <div class="container d-flex justify-content-center">
+
+        <div class="row">
+            <div class="col-lg-6 d-flex justify-content-center align-items-center login-illus">
+                <!-- <img src="assets/svg/login.svg" alt=""> -->
+                <div style="width: 41rem">
+                    <h1 style="margin-bottom: 1rem; color: #767d6b">Lorem ipsum dolor sit.</h1>
+                    <p class="text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque aliquid assumenda suscipit tempora deserunt facilis porro deleniti eligendi repellendus ullam error quasi quam, accusamus quod aut rem architecto. Nisi, iusto.</p>
+                </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center" style="z-index: 999;">
+
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-container" spellcheck="false" style="margin: 0 auto">
+                    <h1 class="title text-center">Login</h1>
+                    <div>
+
+                        <div class="d-flex justify-content-center align-items-center">
+                            <span class="iconify user-icon" data-icon="gridicons:user-circle" data-inline="false"></span>
+
+                        </div>
+
+                        <div class="alert alert-danger" role="alert" *ngIf="serverErrorResponse">
+                            {{ serverErrorResponse }}
+                        </div>
+
+                        <div class="alert alert-success text-center" role="alert" *ngIf="registrationSuccess">
+                            Login successful. Redirecting...
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="E-mail address" formControlName="email" required id="email">
+                        </div>
+                        <div class="invalid-label-container" *ngIf="loginForm.get('email').touched && loginForm.get('email').dirty && loginForm.hasError('required', 'email')">
+                            <label  for="email" class="invalid-label">Required</label>
+                        </div>
+                        <div class="invalid-label-container" *ngIf="loginForm.get('email').touched && loginForm.get('email').dirty && loginForm.hasError('email', 'email')">
+                            <label  for="email" class="invalid-label">Please enter a valid email address.</label>
+                        </div>
+
+                        <div class="form-group">
+                            <input [type]="passwordVisibility" class="form-control pw-input" placeholder="Password" formControlName="password" id="password" autocomplete="on"><span class="eye" (click)="togglePasswordVisibility()">{{ passwordVisibility === 'password' ? 'SHOW' : 'HIDE' }}</span>
+                        </div>
+                        <div class="invalid-label-container" *ngIf="loginForm.get('password').dirty && loginForm.hasError('required', 'password')">
+                            <label  for="password" class="invalid-label">Required</label>
+                        </div>
+                        <div class="invalid-label-container" *ngIf="loginForm.get('password').dirty && loginForm.hasError('minlength', 'password')">
+                            <label  for="password" class="invalid-label">Password must be at least 8 characters.</label>
+                        </div>
+                        <div class="invalid-label-container password" *ngIf="loginForm.get('password').value?.length >= 8 && loginForm.get('password').dirty && loginForm.hasError('pattern', 'password')">
+                            <label  for="password" class="invalid-label">Password must have at least one lowercase & uppercase letter, one number & one special character.</label>
+                        </div>
+
+                        <button class="btn btn-block sign-up-btn" [disabled]="isLoginLoading || !loginForm.valid">{{ isLoginLoading ? 'Logging in...' : 'Login' }}</button> <!-- [disabled]="!loginForm.valid" -->
+
+                        <label for="sign-up-btn" class="sign-up-label text-center">New user?<a class="form-link" routerLink="/account/register" (click)="onClickRegister()"> Create account.</a></label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+

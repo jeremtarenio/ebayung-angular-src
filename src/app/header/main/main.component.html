@@ -1,0 +1,32 @@
+<header id="header">
+    <div class="container py-2">
+      <div class="row text-center">
+        <div class="col-4 d-flex justify-content-center  align-items-center">
+          <form class="form-inline my-2 my-lg-0" (submit)="onSearch(searchForm.value)">
+            <input #searchForm name="searchValue" class="form-control mr-sm-2 pl-0" id="search-field" type="search" placeholder="Search" aria-label="Search">
+            <div style="cursor: pointer;">
+              <button class="search-btn" type="submit"><span class="iconify" data-icon="ant-design:search-outline" data-inline="false"></span></button>
+            </div>
+          </form>
+        </div>
+        <div class="col-4 d-flex justify-content-center align-items-center">
+            <div routerLink="/" (click)="scrollToTop()" style="display: inline; cursor: pointer;">
+              <h2 class="mb-0 font-weight-light mt-3" id="company-name">
+                <span class="iconify mb-3" data-icon="fa-solid:carrot" data-inline="false"></span>
+                eBayung
+                <span class="iconify mb-3" data-icon="fa-solid:carrot" data-inline="false"></span>
+              </h2>
+            </div>
+        </div>
+        <div class="col-4 d-flex justify-content-center align-items-center">
+          <div (click)="onToggleCart()" style="cursor: pointer;">
+            <div class="cart-icon-container">
+              <div class="cart-item-count-container" [ngClass]="{'scaled': scaled ? true : false}"><p class="count">{{ cartCount }}</p></div>
+              <span class="iconify" data-icon="bx:bx-basket" data-inline="false"></span>
+            </div>
+            <p class="mb-0">₱{{ cartTotal ? (cartTotal | number:'.2') : 0 }}</p>
+          </div>
+        </div>
+      </div>
+  </div>
+  </header>

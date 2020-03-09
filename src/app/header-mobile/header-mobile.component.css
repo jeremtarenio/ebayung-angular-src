@@ -1,0 +1,244 @@
+button:focus {
+  outline: 0;
+}
+
+.my-header {
+  transition: 0.3s;
+  -moz-transition: none !important;
+}
+
+/* company name */
+.company {
+  font-size: 1.6rem !important;
+  color: white;
+  font-family: "Cedarville Cursive";
+}
+
+.iconify.nav-icon {
+  margin-bottom: 0.35rem;
+  margin-right: 1.35rem;
+}
+
+.iconify.carrot-icon {
+  margin-bottom: 0.9rem;
+}
+
+/* burger menu */
+
+.bar1,
+.bar2,
+.bar3 {
+  width: 23px;
+  height: 2px;
+  margin: 5px;
+  background: white;
+  transition: all 0.5s ease;
+}
+
+.bar1.change {
+  transform: rotate(-45deg) translate(-5px, 5px);
+}
+
+.bar2.change {
+  opacity: 0;
+}
+
+.bar3.change {
+  transform: rotate(45deg) translate(-5px, -5px);
+}
+
+/* side nav */
+
+.sidenav {
+  height: 100%;
+  width: 300px;
+  transform: translateX(-250px); /* initially hidden */
+  position: fixed;
+  /* z-index: 1; */
+  top: 0;
+  left: 0;
+  background-color: #535f54;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px;
+  padding-bottom: 60px;
+  transition: 0.3s;
+  -moz-transition: none !important;
+}
+
+.sidenav a {
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 300;
+  padding-top: 0.7rem;
+  padding-bottom: 0.8rem;
+  padding-right: 3rem;
+  padding-left: 3rem;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: orange;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left 0.3s;
+}
+
+.cat {
+  margin-left: 1.7rem !important;
+}
+
+.cat-arrow {
+  transition: transform 0.3s;
+}
+
+.categories {
+  transition: height 0.3s;
+}
+
+.active-category-title {
+  background: #384139;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.cart-item-count-container {
+  position: absolute;
+  color: white;
+  background: red;
+  border-radius: 50%;
+  z-index: 2;
+  width: 18px;
+  height: 18px;
+  font-size: 12px;
+  text-align: center;
+  display: table;
+  margin-left: 24.8px;
+  transform: scale(1);
+  transition: 0.3s;
+}
+
+.cart-item-count-container .count {
+  margin: 0;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.cart-item-count-container.scaled {
+  transform: scale(1.5);
+}
+
+#main-nav {
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  -webkit-box-shadow: 2px 7px 5px -4px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 2px 7px 5px -4px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 7px 5px -4px rgba(0, 0, 0, 0.25);
+}
+
+.cart-icon,
+.search-icon {
+  font-size: 1.6rem;
+  color: white;
+}
+
+.cart-icon {
+  margin-bottom: 0.2rem;
+}
+
+.cart-amount {
+  color: white;
+  font-size: 0.8rem;
+}
+
+.search-section {
+  height: 55.98px;
+  position: fixed;
+  z-index: 999;
+  background: white;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.search-section.visible {
+  transform: translateY(0%);
+}
+
+.search-section.hidden {
+  transform: translateY(-100%);
+}
+
+.search-field {
+  border-radius: 0px;
+  border-left: 0px;
+  border-top: 0px;
+  border-right: 0px;
+  width: unset;
+  display: inline;
+}
+
+.search-field:focus {
+  outline: none;
+  border-color: unset;
+  box-shadow: unset;
+}
+
+.search-btn {
+  background: 0;
+  border: 0;
+  font-size: 1.6rem;
+  vertical-align: middle;
+}
+
+.darkener {
+  transition: 0.3s;
+}
+
+.darkener.visible {
+  opacity: 1;
+
+}
+
+.darkener.hidden {
+  opacity: 0;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .sidenav {
+    -moz-transition: 0.3s !important;
+  }
+
+  .my-header {
+    -moz-transition: 0.3s !important;
+  }
+}
+
+/*********************************************/
+
+@media screen and (max-width: 991px) {
+  /* means 992 and below */
+  /*  nav {
+          display: flex!important;
+      } */
+}

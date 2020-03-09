@@ -1,0 +1,151 @@
+section {
+    background: url('../../../assets/svg/method-draw-image v2.svg');
+    background-size: 46vw;
+    background-position: bottom;
+    background-color: #F1F3EC;
+    background-repeat: repeat-x;
+}
+
+.container {
+  max-width: 95%;
+  padding-top: 3.5rem;
+  padding-bottom: 7.3rem;
+  min-height: calc(100vh - 55.98px);
+}
+
+.register-caption {
+  display: none!important;
+}
+
+.register-col {
+  display: flex;
+  justify-content: center;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.title {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 3px;
+  margin-bottom: 2rem;
+}
+
+.caption {
+  font-weight: bold;
+}
+
+.caption .pd {
+  color: #767d6b;
+}
+
+.caption .ri {
+  color: #f2a231;
+}
+
+.sign-up-btn {
+  background: #f2a231;
+  color: white;
+  border-radius: 0;
+}
+
+.tnc-link {
+  color: #f2a231;
+  font-weight: bold;
+}
+
+.sign-up-label,
+.invalid-label,
+.verifying-label {
+  font-size: 0.8rem;
+}
+
+.invalid-label,
+.verifying-label {
+  color: red;
+  margin-bottom: 1rem;
+  margin-left: 0.35rem;
+}
+
+.verifying-label {
+  color: green;
+}
+
+.invalid-label.other {
+  margin-bottom: 0rem;
+}
+
+.invalid-label-container {
+  margin-top: -0.9rem;
+}
+
+.invalid-label-container.password {
+  margin-top: -0.66rem;
+}
+
+.invalid-label-container.other {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+
+form .ng-dirty.ng-valid {
+  border: 1px solid #58c458;
+}
+
+form .ng-dirty.ng-invalid {
+  border: 1px solid red;
+}
+
+.eye {
+  float: right;
+  margin-top: -27.7px;
+  margin-right: 13.3px;
+  position: relative;
+  z-index: 2;
+  font-weight: bold;
+  color: #f2a231;
+  font-size: 0.8rem;
+}
+
+.pw-input {
+  padding-right: 24.2vw;
+}
+
+@media screen and (min-width: 768px) {
+  section {
+    background-size: 11.9rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .register-caption {
+    display: flex!important;
+  }
+
+  .pw-input {
+    padding-right: 4.3vw;
+  }
+
+  .container {
+    max-width: 90%;
+    padding-bottom: 8rem;
+    padding-top: 5rem;
+    min-height: initial;
+  }
+
+  .form-container {
+    width: 34.5rem;
+    padding: 3rem;
+    box-shadow: 0px 3px 10.4px 1px rgba(0, 0, 0, 0.15);
+    background: #ffffff;
+    border-radius: 8px;
+  }
+
+  .register-col {
+    justify-content: flex-end;
+  }
+
+}
