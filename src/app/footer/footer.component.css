@@ -1,6 +1,6 @@
 footer {
     background: rgb(243, 240, 236);
-    
+
 }
 
 h5 {
@@ -33,6 +33,10 @@ p {
     display: initial;
 }
 
+.group-links p {
+    cursor: pointer;
+}
+
 
 @media screen and (min-width:992px) { /* means 992 and ABOVE */
     .container{
@@ -47,5 +51,5 @@ p {
     .mobile-only-container {
         display: none;
     }
-    
+
 }

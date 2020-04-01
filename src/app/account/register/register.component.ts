@@ -82,12 +82,15 @@ export class RegisterComponent implements OnInit {
     this.passwordVisibility = this.passwordVisibility === 'password' ? 'text' : 'password';
   }
 
+
+  // prevents white spaces in an input
   empty(control: FormControl): Promise<any> | Observable<any> {
     const promise = new Promise<any>((resolve, reject) => {
         const trimmed = control.value.trim();
+        console.log(trimmed);
 
         if (!trimmed) {
-          resolve({'empty': true});
+          resolve({ 'empty': true });
         } else {
           resolve(null);
         }

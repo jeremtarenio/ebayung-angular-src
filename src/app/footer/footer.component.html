@@ -2,23 +2,23 @@
     <div class="container py-5">
         <div class="row footer-content">
             <div class="col-md-4 footer-column">
-                <div>
+                <div class="group-links">
                     <h5>Quick Links</h5>
-                    <p>Cart</p>
-                    <p>My Account</p>
+                    <p (click)="onToggleCart()">Cart</p>
+                    <p (click)="onNavigate('/account/dashboard')">My Account</p>
                     <p>Privacy Policy</p>
                     <p>Terms & Conditions</p>
                     <p>About Us</p>
                 </div>
             </div>
             <div class="col-md-4 footer-column">
-                <div>
+                <div class="group-links">
                     <h5>Categories</h5>
-                    <p *ngFor="let category of categories" class="text-capitalize">{{ category.name }}</p>
+                    <p (click)="navigateToCategory(category.url)" *ngFor="let category of categories" class="text-capitalize">{{ category.name }}</p>
                 </div>
             </div>
             <div class="col-md-4 footer-column">
-                <div>
+                <div class="group-links">
                     <h5>Contact</h5>
                     <p>0923 948 2048</p>
                     <p>(02) 7796 8900</p>

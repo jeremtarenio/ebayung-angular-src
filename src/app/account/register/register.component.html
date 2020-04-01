@@ -38,10 +38,16 @@
                         <div class="form-group">
                             <input type="email" class="form-control" placeholder="E-mail address*" formControlName="email" required id="email">
                         </div>
-                        <div class="invalid-label-container" *ngIf="registrationForm.get('email').dirty && registrationForm.hasError('pattern', 'email')">
+                        <!-- <div class="invalid-label-container" *ngIf="registrationForm.get('email').dirty && registrationForm.hasError('pattern', 'email')">
                             <label  for="email" class="invalid-label">Required</label>
                         </div>
                         <div class="invalid-label-container" *ngIf="registrationForm.get('email').dirty && registrationForm.get('email').touched && registrationForm.hasError('email', 'email')">
+                            <label  for="email" class="invalid-label">Please enter a valid email address.</label>
+                        </div> -->
+                        <div class="invalid-label-container" *ngIf="registrationForm.get('email').dirty && registrationForm.hasError('required', 'email')">
+                            <label  for="email" class="invalid-label">Required</label>
+                        </div>
+                        <div class="invalid-label-container" *ngIf="registrationForm.get('email').dirty && registrationForm.get('email').touched && registrationForm.hasError('pattern', 'email')">
                             <label  for="email" class="invalid-label">Please enter a valid email address.</label>
                         </div>
                         <div class="invalid-label-container" *ngIf="registrationForm.get('email').status === 'PENDING'">
