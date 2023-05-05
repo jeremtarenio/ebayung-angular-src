@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://ebayung-backend.herokuapp.com'
+  apiUrl: 'https://ebayung-backend.onrender.com/'
   /* apiUrl: 'http://' + location.hostname + ':3000' */
 };
 
